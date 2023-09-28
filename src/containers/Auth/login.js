@@ -24,23 +24,17 @@ class Login extends Component {
         this.setState({
             username: e.target.value
         })
-
     }
-
     handleOnChangePassword = (e) => {
         this.setState({
             password: e.target.value
         })
-
-
     }
-
     handleLogin = async () => {
         this.setState({
             errMessage: ''
         })
         try {
-
             let data = await handleLoginApi(this.state.username, this.state.password);
             if (data && data.errCode !== 0) {
                 this.setState({
@@ -51,7 +45,6 @@ class Login extends Component {
                 this.props.userLoginSuccess(data.user);
                 console.log('loging succeeds');
             }
-
         } catch (e) {
             if (e.response) {
                 if (e.response.data) {
@@ -62,15 +55,13 @@ class Login extends Component {
              }
         }
     }
-
+ 
     handleShowHidePassword = () => {
-
         this.setState({
             showPassword: !this.state.showPassword
         })
         console.log(this.state.showPassword);
     }
-
     render() {
         return (
             <div className="login-background">
@@ -93,7 +84,7 @@ class Login extends Component {
                             <label>Password:</label>
                             <div className="custom-input-password">
                                 <input
-                                    type={this.state.showPassword    ? 'text':'password'}
+                                    type={this.state.showPassword ? 'text':'password'}
                                     className="form-control"
                                     placeholder='Enter your password'
                                     value={this.state.password}
