@@ -2,7 +2,6 @@
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width:100%;
-
 }
 #customers td,
 #customers th {
@@ -41,7 +40,13 @@
     &:hover{
         background-color: transparent !important;
         color: rbg(235, 15,15) !important;
-
     }
-
+}
+.modal-user-container{
+    .modal-header {
+        button.close {
+            color: white;
+            font-size: 20px;
+        }
+    }
 }
