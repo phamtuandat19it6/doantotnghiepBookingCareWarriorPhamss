@@ -3,12 +3,14 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import {Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 class ModalUser extends Component {
-
-
     constructor(props) {
         super(props);
         this.state = {
-
+            email:'',
+            password:'',
+            firstName:'',
+            lastName:'',
+            address: '',
         }
     }
     componentDidMount() {
@@ -16,82 +18,130 @@ class ModalUser extends Component {
     toggle = () => {
         this.props.toggleFromParent();
     }
+    handleOnchangeInput = (event, id) => {
+        //bad code.modify state
+        // this.state[id] = event.target.value;
+        // this.state({
+        //     ...this.state
+        // }, () => {
+        //     console.log('check bad state:',this.state)
+        // })
 
-
+        //goodcode
+        let copyState = { ...this.state };
+        copyState[id] = event.target.value;
+        this.setState({
+                ...copyState
+        }, () => {
+            console.log('check good state:',this.state)
+        });
+    }
+    checkValidateInput = () => {
+    let isValid = true;
+        let arrInput = ['email', 'password', 'firstName', 'lastName', 'address'];
+        for (let i = 0; i < arrInput.length; i++){
+            console.log('check inside loop', !this.state[arrInput[i]],arrInput[i])
+            if (!this.state[arrInput[i]]) {
+                isValid = false;
+                alert('Missing parameter:' + arrInput[i]);
+                break;
+            }
+        }
+        return isValid;
+    }
+    handleAddNewUser = () => {
+        let isValid = this.checkValidateInput();
+        console.log(isValid)
+        if (isValid === true) {
+            console.log('check props child', this.props)
+            this.props.createNewUser(this.state);
+            console.log('data modal',this.state)
+        }
+    }
     render() {
-        console.log('check child props', this.props);
-        console.log('check child open modal', this.props.isOpen);
         return (
             <Modal
                 isOpen={this.props.isOpen}
                 toggle={() => { this.toggle() }}
-                className={'modal-user-container'}
+                className='modal-user-container'
                 size="lg"
             >
                 <ModalHeader toggle={() => {this.toggle()}}> Create a new user </ModalHeader>
                 <ModalBody>
-                <div class="container">
-                    <div class="row">
-                    <form action="/post-crud" method="POST">
-                        <div class="form-row">
-                        <div class="col-12 mt-3">Create a new user</div>
-                        <div class="form-group col-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" placeholder="Email" name="email"/>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='form-row'>
+                        <div className='form-group col-6'>
+                            <label htmlFor="inputEmail4">Email</label>
+                            <input
+                                onChange={(event) => { this.handleOnchangeInput(event, "email") }}
+                                type="email"
+                                className='form-control'
+                                placeholder="Email"
+                                name="email"
+                                value={this.state.email}
+                            />
                         </div>
-                        <div class="form-group col-6">
-                            <label for="inputPassword4">Password</label>
-                            <input type="password" class="form-control" placeholder="Password" name="password"/>
-                        </div>
-                        </div>
-                        <div class="form-row">
-                        <div class="form-group col-6">
-                            <label for="inputEmail4">First name</label>
-                            <input type="text" class="form-control" placeholder="First name" name="firstName"/>
-                        </div>
-                        <div class="form-group col-6">
-                            <label for="inputPassword4">Last name</label>
-                            <input type="text" class="form-control" placeholder="Last name" name="lastName"/>
-                        </div>
-                        </div>
-                        <div class="form-group">
-                        <label for="inputAddress">Address</label>
-                        <input type="text" class="form-control" name="address" placeholder="1234 Main St"/>
-                        </div>
-                        <div class="form-row">
-                        <div class="form-group col-6">
-                            <label for="inputCity">Phone number</label>
-                            <input type="text" class="form-control" name="phonenumber"/>
-                        </div>
-                        <div class="form-group col-3">
-                            <label for="inputState">Sex</label>
-                            <select name="gender" class="form-control">
-                            <option selected value="0">Female</option>
-                            <option value="1">Male</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-3">
-                            <label for="inputZip">Role</label>
-                            <select name="roleId" class="form-control">
-                            <option selected value="0">Admin</option>
-                            <option value="1">Doctor</option>
-                            <option value="2">Patient</option>
-                            </select>
+                        <div className='form-group col-6'>
+                            <label htmlFor="inputPassword4">Password</label>
+                            <input
+                                onChange={(event) => { this.handleOnchangeInput(event, "password") }}
+                                type="password" className='form-control' placeholder="Password"
+                                name="password"
+                                value={this.state.password}
+                            />
                         </div>
                         </div>
-                        <button type="submit" class="btn btn-primary px-3">Sign in</button>
-                    </form>
+                        <div className='form-row'>
+                            <div className='form-group col-6'>
+                            <label htmlFor="inputEmail4">First name</label>
+                            <input
+                                onChange={(event) => { this.handleOnchangeInput(event, "firstName") }}
+                                type="text"
+                                className='form-control'
+                                placeholder="First name"
+                                name="firstName"
+                                value={this.state.firstName}
+                            />
+                        </div>
+                        <div className='form-group col-6'>
+                            <label htmlFor="inputPassword4">Last name</label>
+                            <input
+                                onChange={(event) => { this.handleOnchangeInput(event, "lastName") }}
+                                type="text"
+                                className='form-control'
+                                placeholder="Last name"
+                                name="lastName"
+                                value={this.state.lastName}
+                            />
+                        </div>
+                        </div>
+                        <div className='form-group'>
+                            <label htmlFor="inputAddress">Address</label>
+                            <input
+                                onChange={(event) => { this.handleOnchangeInput(event, "address") }}
+                                type="text" className='form-control'
+                                name="address"
+                                placeholder="1234 Main St"
+                                value={this.state.address}
+                            />
+                        </div>
                     </div>
                 </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary px-2" onClick={() => {this.toggle()}}>Do something</Button>{''}
-                    <Button color="secondary px-2" onClick={() => {this.toggle()}}>Cancel</Button>
+                    <Button
+                        color="primary px-3"
+                        onClick={() => { this.handleAddNewUser() }}>
+                        Add user</Button>{' '}
+                    <Button
+                        color="secondary px-3"
+                        onClick={() => { this.toggle() }}>
+                        Cancel</Button>
                 </ModalFooter>
            </Modal>
         )
     }
-
 }
 
 const mapStateToProps = state => {
