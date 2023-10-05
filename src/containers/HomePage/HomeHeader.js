@@ -9,11 +9,15 @@ import suckhoetinhthan from '../../assets/161403-iconsuc-khoe-tinh-than.png'
 import nhakhoa from '../../assets/161410-iconkham-nha-khoa.png'
 import khamtuxa from '../../assets/161817-iconkham-tu-xa.png'
 import tongquat from '../../assets/iconkham-tong-quan.png'
-
+import { LANGUAGES } from "../../utils/constant"
+import { changeLanguageApp } from '../../store/actions/appActions';
 class HomeHeader extends Component {
-
+    changLanguage =(language) =>{
+        this.props.changeLanguageAppRedux(language)
+    }
     render() {
-        console.log('check props:',this.props)
+        let language = this.props.language
+        console.log('check language:',language)
 
         // const { isLoggedIn } = this.props;
         // let linkToRedirect = isLoggedIn ? '/system/user-manage' : '/home';
@@ -48,8 +52,9 @@ class HomeHeader extends Component {
                         <div className='support'>
                             <i className="fas fa-question-circle"></i><FormattedMessage id="homeheader.support"/>
                         </div>
-                        <div className="languge-vi">VN</div>
-                        <div className="languge-en">EN</div>
+                        <div className={language === LANGUAGES.VI ?'language-vi active': 'language-vi' }><span onClick={()=> this.changLanguage(LANGUAGES.VI)}>VN</span><div className="flag"></div></div>
+                        <div className={language === LANGUAGES.EN ? 'language-en active' : 'language-en'}><span onClick={() => this.changLanguage(LANGUAGES.EN)}>EN</span><div className="flag"></div></div>
+
                     </div>
                 </div>
             </div>
@@ -107,6 +112,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        changeLanguageAppRedux:(language) =>dispatch(changeLanguageApp(language))
     };
 };
 
