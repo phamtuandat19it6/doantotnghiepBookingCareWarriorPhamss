@@ -67,8 +67,10 @@
             }
 
             .language-vi {
-                cursor: pointer;
                 opacity: 0.5;
+                span{
+                    cursor: pointer;
+                }
                 &:hover{
                     opacity: 1;
                 }
@@ -97,9 +99,9 @@
             }
             .language-en {
                 margin:0 10px;
-                cursor: pointer;
                 opacity: 0.5;
                 &:hover{
+                    cursor: pointer;
                     opacity: 1;
                 }
 
@@ -132,7 +134,8 @@
 }
 .home-header-banner {
     background: url(../../assets/background.jpg)center center no-repeat;
-    height: 715px;
+    height: 80vh;
+    width: 100vw;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -184,12 +187,38 @@
         background-image: linear-gradient(rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.9),rgba(255, 255, 255, 1));
         display: flex;
         justify-content: center;
-        align-items: flex-start;
+        align-items: flex-end;
+        padding-bottom: 20px;
         .options{
             display: flex;
             align-items: center;
             justify-content: center;
             transform: translateX(35px);
+            .option-child:nth-child(1){
+                .text-child{
+                    width: 100px;
+                }
+            }
+            .option-child:nth-child(2){
+                .text-child{
+                    width: 88px;
+                }
+            }
+            .option-child:nth-child(3){
+                .text-child{
+                    width: 85px;
+                }
+            }
+            .option-child:nth-child(4){
+                .text-child{
+                    width: 90px;
+                }
+            }
+            .option-child:nth-child(6){
+                .text-child{
+                    width: 88px;
+                }
+            }
             .option-child {
                 min-width: 150px;
                 font-size: 16px;
@@ -213,7 +242,8 @@
                     font-weight: bold;
                     opacity: 0.9;
                     text-shadow: 1px 1px 1px rgb(241, 234, 234);
-
+                    width: 100px;
+                    margin: 0 auto;
                     &:hover{
                         color: #45c3d2;
                         transition: 0.2s linear;

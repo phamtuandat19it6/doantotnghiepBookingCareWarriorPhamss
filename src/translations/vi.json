@@ -13,15 +13,12 @@
   "banner": {
     "title1": "NỀN TẢNG Y TẾ",
     "title2": "CHĂM SÓC SỨC KHỎE TOÀN DIỆN",
-    "child-kham": "Khám",
-    "child-xetnghiem": "Xét nghiệm",
-    "child-health": "Sức khỏe",
-    "child1": "chuyên khoa",
-    "child2": "từ xa",
-    "child3": "Tổng quát",
-    "child4": "y học",
-    "child5": "Tinh thần",
-    "child6": "nha khoa"
+    "child1": "Khám chuyên khoa",
+    "child2": "Khám từ xa",
+    "child3": "Khám Tổng quát",
+    "child4": "Xét nghiệm y học",
+    "child5": "Sức khỏe Tinh thần",
+    "child6": "Khám nha khoa"
   },
   "common": {
     "add": "Thêm",

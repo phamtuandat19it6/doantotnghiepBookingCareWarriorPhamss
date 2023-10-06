@@ -13,15 +13,12 @@
   "banner": {
     "title1": "MEDICAL FOUNDATION",
     "title2": "COMPREHENSIVE HEALTH CARE",
-    "child-kham": "examination",
-    "child-xetnghiem": "test",
-    "child-health": "health",
-    "child1": "Speciality",
-    "child2": "Remote",
-    "child3": "General",
-    "child4": "Medicine",
-    "child5": "Mental",
-    "child6": "Dental "
+    "child1": "Speciality examination",
+    "child2": "Remote examination",
+    "child3": "General examination",
+    "child4": "Medicine test",
+    "child5": " Health mental",
+    "child6": "Dental examination"
   },
   "common": {
     "add": "Add",
