@@ -23,33 +23,33 @@ class HandBook extends Component {
                     </div>
                     <div className="section-body">
                     <Slider {...this.props.settings}>
-                        <div className='section-customize'>
+                        <div className='section-customize section-handbook'>
                            <div className="bg-image section-handbook"></div>
-                            <div>Cơ xương khớp</div>
+                            <div className='text-content'>7 địa chỉ khám tốt nhất thành phố HCM ( phần 2 )</div>
                         </div>
-                        <div className='section-customize'>
+                        <div className='section-customize section-handbook'>
                            <div className="bg-image section-handbook"></div>
-                            <div>Cơ xương khớp</div>
+                           <div className='text-content'>7 địa chỉ khám tốt nhất thành phố HCM ( phần 2 )</div>
                         </div>
-                        <div className='section-customize'>
+                        <div className='section-customize section-handbook'>
                            <div className="bg-image section-handbook"></div>
-                            <div>Cơ xương khớp</div>
+                           <div className='text-content'>7 địa chỉ khám tốt nhất thành phố HCM ( phần 2 )</div>
                         </div>
-                        <div className='section-customize'>
+                        <div className='section-customize section-handbook'>
                            <div className="bg-image section-handbook"></div>
-                            <div>Cơ xương khớp</div>
+                           <div className='text-content'>7 địa chỉ khám tốt nhất thành phố HCM ( phần 2 )</div>
                         </div>
-                        <div className='section-customize'>
+                        <div className='section-customize section-handbook'>
                             <div className="bg-image section-handbook"></div>
-                            <div>Cơ xương khớp</div>
+                            <div className='text-content'>7 địa chỉ khám tốt nhất thành phố HCM ( phần 2 )</div>
                         </div>
-                        <div className='section-customize'>
+                        <div className='section-customize section-handbook'>
                            <div className="bg-image section-handbook"></div>
-                            <div>Cơ xương khớp</div>
+                           <div className='text-content'>7 địa chỉ khám tốt nhất thành phố HCM ( phần 2 )</div>
                         </div>
-                        <div className='section-customize'>
+                        <div className='section-customize section-handbook'>
                            <div className="bg-image section-handbook"></div>
-                            <div>Cơ xương khớp</div>
+                           <div className='text-content'>7 địa chỉ khám tốt nhất thành phố HCM ( phần 2 )</div>
                         </div>
                     </Slider>
                     </div>

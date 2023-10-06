@@ -25,31 +25,31 @@ class Specialty extends Component {
                     <Slider {...this.props.settings}>
                         <div className='section-customize'>
                            <div className="bg-image section-specialty"></div>
-                            <div>Cơ xương khớp</div>
+                            <div className='text-content'>Cơ xương khớp</div>
                         </div>
                         <div className='section-customize'>
                            <div className="bg-image section-specialty"></div>
-                            <div>Cơ xương khớp</div>
+                            <div className='text-content'>Cơ xương khớp</div>
                         </div>
                         <div className='section-customize'>
                            <div className="bg-image section-specialty"></div>
-                            <div>Cơ xương khớp</div>
+                            <div className='text-content'>Cơ xương khớp</div>
                         </div>
                         <div className='section-customize'>
                            <div className="bg-image section-specialty"></div>
-                            <div>Cơ xương khớp</div>
+                            <div className='text-content'>Cơ xương khớp</div>
                         </div>
                         <div className='section-customize'>
                             <div className="bg-image section-specialty"></div>
-                            <div>Cơ xương khớp</div>
+                            <div className='text-content'>Cơ xương khớp</div>
                         </div>
                         <div className='section-customize'>
                            <div className="bg-image section-specialty"></div>
-                            <div>Cơ xương khớp</div>
+                            <div className='text-content'>Cơ xương khớp</div>
                         </div>
                         <div className='section-customize'>
                            <div className="bg-image section-specialty"></div>
-                            <div>Cơ xương khớp</div>
+                            <div className='text-content'>Cơ xương khớp</div>
                         </div>
                     </Slider>
                     </div>

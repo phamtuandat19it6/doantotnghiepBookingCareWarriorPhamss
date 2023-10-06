@@ -42,12 +42,31 @@
         .section-customize {
             height: 157px !important;
             width: 278px !important;
-            &.doctor{
+            &div:nth-child(2):hover{
+
+                color: #45c3d2;
+                transition: 0.2s linear;
+
+            }
+            &.section-outstanding-doctor{
                 width: 278px !important;
                 height: 245px !important;
                 text-align: center;
                 border: 1px solid #eee;
                 padding-top: 10px;
+            }
+            &.section-handbook{
+               display: flex !important;
+               font-size: 16px;
+               font-weight: 600;
+               width: 100% !important;
+               gap: 12px;
+               font-family: 'Montserrat', sans-serif;
+               .text-content{
+                width: calc(50% - 5px) !important;
+                text-shadow: 1px 1px 1px #fff;
+                opacity: .9 !important;
+               }
             }
             .outer-bg{
 
@@ -60,7 +79,6 @@
                     width: 100% !important;
                     height: 100% !important;
                     border-radius: 50%;
-
 
                 }
 
@@ -86,6 +104,15 @@
                 }
                 &.section-handbook{
                     background-image: url('../../assets/handbook/dia-chi-kham-nhi-uy-tin.png');
+                    width: calc(50% - 5px) !important;
+                    height: 157px !important;
+                }
+            }
+            .text-content{
+                opacity: 0.9;
+                &:hover{
+                    color: #45c3d2;
+                    transition: 0.2s linear;
                 }
             }
 
@@ -111,6 +138,8 @@
            .title-section{
                font-size: 22px;
                font-weight: 600;
+               opacity: .85;
+               text-shadow: 1px 1px 1px #fff;
            }
            button.btn-section{
                float: right;

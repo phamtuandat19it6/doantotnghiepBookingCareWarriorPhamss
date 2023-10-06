@@ -18,31 +18,31 @@ class MeedicalFacility extends Component {
                     <Slider {...this.props.settings}>
                         <div className='section-customize'>
                            <div className="bg-image section-medical-facility"></div>
-                            <div>Hệ thống thu cúc</div>
+                            <div className='text-content'>Hệ thống thu cúc</div>
                         </div>
                         <div className='section-customize'>
                            <div className="bg-image section-medical-facility"></div>
-                            <div>Hệ thống thu cúc</div>
+                            <div className='text-content'>Hệ thống thu cúc</div>
                         </div>
                         <div className='section-customize'>
                            <div className="bg-image section-medical-facility"></div>
-                            <div>Hệ thống thu cúc</div>
+                            <div className='text-content'>Hệ thống thu cúc</div>
                         </div>
                         <div className='section-customize'>
                            <div className="bg-image section-medical-facility "></div>
-                            <div>Hệ thống thu cúc</div>
+                            <div className='text-content'>Hệ thống thu cúc</div>
                         </div>
                         <div className='section-customize'>
                             <div className="bg-image section-medical-facility"></div>
-                            <div>Hệ thống thu cúc</div>
+                            <div className='text-content'>Hệ thống thu cúc</div>
                         </div>
                         <div className='section-customize'>
                            <div className="bg-image section-medical-facility"></div>
-                            <div>Hệ thống thu cúc</div>
+                            <div className='text-content'>Hệ thống thu cúc</div>
                         </div>
                         <div className='section-customize'>
                            <div className="bg-image section-medical-facility"></div>
-                            <div>Hệ thống thu cúc</div>
+                            <div className='text-content'>Hệ thống thu cúc</div>
                         </div>
                     </Slider>
                     </div>

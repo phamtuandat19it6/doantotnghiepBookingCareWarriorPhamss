@@ -16,54 +16,54 @@ class OutstandingDoctor extends Component {
                     </div>
                     <div className="section-body">
                     <Slider {...this.props.settings}>
-                        <div className='section-customize doctor'>
+                        <div className='section-customize section-outstanding-doctor'>
                             <div className='outer-bg'>
                                 <div className="bg-image section-outstanding-doctor"></div>
                             </div>
-                                 <div>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
-                                 <div>Nam học</div>
+                                 <div className='text-content'>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
+                                 <div className='text-content'>Nam học</div>
                         </div>
-                        <div className='section-customize doctor'>
+                        <div className='section-customize section-outstanding-doctor'>
                             <div className='outer-bg'>
                                 <div className="bg-image section-outstanding-doctor"></div>
                             </div>
-                                 <div>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
-                                 <div>Nam học</div>
+                                 <div className='text-content'>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
+                                 <div className='text-content'>Nam học</div>
                         </div>
-                        <div className='section-customize doctor'>
+                        <div className='section-customize section-outstanding-doctor'>
                             <div className='outer-bg'>
                                 <div className="bg-image section-outstanding-doctor"></div>
                             </div>
-                                 <div>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
-                                 <div>Nam học</div>
+                                 <div className='text-content'>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
+                                 <div className='text-content'>Nam học</div>
                         </div>
-                        <div className='section-customize doctor'>
+                        <div className='section-customize section-outstanding-doctor'>
                             <div className='outer-bg'>
                                 <div className="bg-image section-outstanding-doctor"></div>
                             </div>
-                                 <div>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
-                                 <div>Nam học</div>
+                                 <div className='text-content'>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
+                                 <div className='text-content'>Nam học</div>
                         </div>
-                        <div className='section-customize doctor'>
+                        <div className='section-customize section-outstanding-doctor'>
                             <div className='outer-bg'>
                                 <div className="bg-image section-outstanding-doctor"></div>
                             </div>
-                                 <div>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
-                                 <div>Nam học</div>
+                                 <div className='text-content'>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
+                                 <div className='text-content'>Nam học</div>
                         </div>
-                        <div className='section-customize doctor'>
+                        <div className='section-customize section-outstanding-doctor'>
                             <div className='outer-bg'>
                                 <div className="bg-image section-outstanding-doctor"></div>
                             </div>
-                                 <div>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
-                                 <div>Nam học</div>
+                                 <div className='text-content'>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
+                                 <div className='text-content'>Nam học</div>
                         </div>
-                        <div className='section-customize doctor'>
+                        <div className='section-customize section-outstanding-doctor'>
                             <div className='outer-bg'>
                                 <div className="bg-image section-outstanding-doctor"></div>
                             </div>
-                                 <div>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
-                                 <div>Nam học</div>
+                                 <div className='text-content'>Khám nam học, Bệnh viện Nam học và Hiếm Muộn Hà Nội</div>
+                                 <div className='text-content'>Nam học</div>
                         </div>
 
 

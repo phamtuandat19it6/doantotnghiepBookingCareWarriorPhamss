@@ -22,6 +22,14 @@ class HomePage extends Component {
             slidesToScroll:1,
 
         };
+        let settingsHandBook =  {
+            dots:false,
+            infinite:true,
+            speed:500,
+            slidesToShow:2,
+            slidesToScroll:1,
+
+        };
 
         return (
             <div>
@@ -29,7 +37,7 @@ class HomePage extends Component {
                 <Specialty settings= {settings}/>
                 <OutstandingDoctor settings={settings}/>
                 <MeedicalFacility settings={settings}/>
-                <HandBook settings={settings}/>
+                <HandBook settings={settingsHandBook}/>
             </div>
         );
     }
