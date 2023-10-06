@@ -7,7 +7,7 @@ import { LANGUAGES } from "../../../utils/constant"
 import Slider from 'react-slick';
 
 
-class Specialty extends Component {
+class HandBook extends Component {
     changLanguage =(language) =>{
         this.props.changeLanguageAppRedux(language)
     }
@@ -15,40 +15,40 @@ class Specialty extends Component {
 
 
         return (
-            <div className='section-share section-specialty'>
+            <div className='section-share section-handbook'>
                 <div className='section-container'>
                     <div className='section-header'>
-                        <span className='title-section'>Chuyên khoa phổ biến</span>
+                        <span className='title-section'>Cẩm nan</span>
                         <button className='btn-section'>xem thêm</button>
                     </div>
                     <div className="section-body">
                     <Slider {...this.props.settings}>
                         <div className='section-customize'>
-                           <div className="bg-image section-specialty"></div>
+                           <div className="bg-image section-handbook"></div>
                             <div>Cơ xương khớp</div>
                         </div>
                         <div className='section-customize'>
-                           <div className="bg-image section-specialty"></div>
+                           <div className="bg-image section-handbook"></div>
                             <div>Cơ xương khớp</div>
                         </div>
                         <div className='section-customize'>
-                           <div className="bg-image section-specialty"></div>
+                           <div className="bg-image section-handbook"></div>
                             <div>Cơ xương khớp</div>
                         </div>
                         <div className='section-customize'>
-                           <div className="bg-image section-specialty"></div>
+                           <div className="bg-image section-handbook"></div>
                             <div>Cơ xương khớp</div>
                         </div>
                         <div className='section-customize'>
-                            <div className="bg-image section-specialty"></div>
+                            <div className="bg-image section-handbook"></div>
                             <div>Cơ xương khớp</div>
                         </div>
                         <div className='section-customize'>
-                           <div className="bg-image section-specialty"></div>
+                           <div className="bg-image section-handbook"></div>
                             <div>Cơ xương khớp</div>
                         </div>
                         <div className='section-customize'>
-                           <div className="bg-image section-specialty"></div>
+                           <div className="bg-image section-handbook"></div>
                             <div>Cơ xương khớp</div>
                         </div>
                     </Slider>
@@ -71,4 +71,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Specialty);
+export default connect(mapStateToProps, mapDispatchToProps)(HandBook);

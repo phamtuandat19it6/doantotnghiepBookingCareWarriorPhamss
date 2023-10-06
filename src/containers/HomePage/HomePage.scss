@@ -1,0 +1,165 @@
+.slick-prev {
+
+    left: -10px !important;
+}
+.slick-prev ,.slick-next{
+    position: absolute !important;
+    z-index: 10;
+    opacity: 1 !important;
+
+    &:before{
+        color: #d7d7d7 !important;
+        padding: 10px !important;
+        font-size: 28px !important;
+        z-index: 11 !important;
+        opacity: .8 !important;
+        background-color: #f5f5f5f5 !important   ;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+        position: inherit !important;
+        left: -20px !important;
+        top:-18px;
+    }
+    &:hover:before{
+        opacity: 1 !important;
+    }
+
+}
+.slick-next {
+    right: -10px !important;
+}
+
+
+.section-share{
+    &.section-specialty{
+        background: #f5f5f5f5;
+    }
+    &.section-medical-facility{
+        background: #f5f5f5f5;
+    }
+
+
+    .section-body {
+        .section-customize {
+            height: 157px !important;
+            width: 278px !important;
+            &.doctor{
+                width: 278px !important;
+                height: 245px !important;
+                text-align: center;
+                border: 1px solid #eee;
+                padding-top: 10px;
+            }
+            .outer-bg{
+
+                width: 120px;
+                height: 120px;
+                margin: 0 auto;
+                margin-bottom: 20px;
+
+                .section-outstanding-doctor{
+                    width: 100% !important;
+                    height: 100% !important;
+                    border-radius: 50%;
+
+
+                }
+
+            }
+            .bg-image{
+                width: 100%;
+                height: 100%;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: #eee;
+
+                &.section-specialty {
+                    background-image: url('../../assets/specialty/co-xuong-khop.jpg');
+
+                }
+                &.section-medical-facility{
+                    background-image: url('../../assets/medical-facility/153236-logo-hung-viet.jpg');
+
+                }
+                &.section-outstanding-doctor{
+                    background-image: url('../../assets/OutstandingDoctor/bac-si-vu-thai-ha.jpg');
+                }
+                &.section-handbook{
+                    background-image: url('../../assets/handbook/dia-chi-kham-nhi-uy-tin.png');
+                }
+            }
+
+        }
+
+    }
+}
+
+.section-share{
+    height: 383px;
+    display: flex;
+    justify-content: center;
+    .section-container{
+       padding: 35px 50px;
+       width: 1250px;
+       display: flex;
+       justify-content: center;
+       flex-direction: column;
+       .section-header{
+           height: 60px;
+           margin-bottom: 20px;
+           padding-top: 30px;
+           .title-section{
+               font-size: 22px;
+               font-weight: 600;
+           }
+           button.btn-section{
+               float: right;
+               padding: 10px 15px;
+               border: none;
+               outline: none;
+               display: block;
+               background: #d6d6d6;
+               color: #333;
+               text-transform: uppercase;
+               cursor: pointer;
+               &:hover{
+                   color: #fff;
+                   background: #f7d800;
+               }
+           }
+       }
+
+   }
+   .slick-prev {
+
+       left: -10px !important;
+   }
+   .slick-prev ,.slick-next{
+       position: absolute !important;
+       z-index: 10;
+       opacity: 1 !important;
+
+       &:before{
+           color: #d7d7d7 !important;
+           padding: 10px !important;
+           font-size: 28px !important;
+           z-index: 11 !important;
+           opacity: .8 !important;
+           background-color: #f5f5f5f5 !important   ;
+           box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+           position: inherit !important;
+           left: -20px !important;
+           top:-18px;
+       }
+       &:hover:before{
+           opacity: 1 !important;
+       }
+
+   }
+   .slick-next {
+       right: -10px !important;
+   }
+
+
+
+}
