@@ -11,11 +11,14 @@ import HomeFooter from './HomeFooter';
 import './HomePage.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Header from '../Header/Header';
+import HeaderSystem from '../Header/HeaderSystem';
 class HomePage extends Component {
 
     render() {
-        // const { isLoggedIn } = this.props;
+        const { systemMenuPath,isLoggedIn } = this.props;
         // let linkToRedirect = isLoggedIn ? '/system/user-manage' : '/home';
+
         let settings =  {
             dots:false,
             infinite:true,
@@ -35,6 +38,8 @@ class HomePage extends Component {
 
         return (
             <div>
+                {this.props.isLoggedIn && <HeaderSystem />}
+
                 <HomeHeader />
                 <Specialty settings= {settings}/>
                 <OutstandingDoctor settings={settings}/>

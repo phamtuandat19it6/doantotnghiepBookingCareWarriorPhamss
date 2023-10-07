@@ -5,7 +5,7 @@
     "health-facility": "health facilities",
     "select-room": "Choose a hospital or clinic",
     "doctor": "Doctor",
-    "select-doctor": "Choose a outstanding doctor", 
+    "select-doctor": "Choose a outstanding doctor",
     "fee": "health check package",
     "check-health": "General health check",
     "support": "Support"
@@ -52,7 +52,7 @@
       "system-administrator": {
         "header": "System Administrator",
         "user-manage": "User manage",
-        "product-manage": "Package manage",
+        "user-redux": "Manage user using redux",
         "register-package-group-or-account": "Register service package for group/account"
       },
       "system-parameter": {
