@@ -18,7 +18,7 @@ class System extends Component {
                         <Route path="/system/user-manage" component={UserManage} />
                         <Route path="/system/user-redux" component={UserRedux} />
                         {/* <Route path="/system/register-package-group-or-account" component={RegisterPackageGroupOrAcc} /> */}
-                        <Route component={() => { return (<Redirect to={systemMenuPath} />) }} />
+                        {/* <Route component={() => { return (<Redirect to={systemMenuPath} />) }} /> */}
                     </Switch>
                 </div>
             </div>

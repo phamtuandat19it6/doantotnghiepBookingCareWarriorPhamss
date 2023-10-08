@@ -12,7 +12,7 @@ import './HomePage.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Header from '../Header/Header';
-import HeaderSystem from '../Header/HeaderSystem';
+import HeaderSystem  from '../Header/HeaderSystem';
 class HomePage extends Component {
 
     render() {
@@ -38,7 +38,7 @@ class HomePage extends Component {
 
         return (
             <div>
-                {this.props.isLoggedIn && <HeaderSystem />}
+                {this.props.isLoggedIn && <Header/>}
 
                 <HomeHeader />
                 <Specialty settings= {settings}/>
