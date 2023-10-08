@@ -62,6 +62,9 @@
     width: 150px;
     align-items: center;
     position: relative;
+    &.language{
+        width: 310px;
+    }
 
     .language-vi {
 
@@ -129,5 +132,8 @@
 
             }
         }
+    }
+    .welcome {
+        margin-right: 10px;
     }
 }

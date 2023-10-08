@@ -17,7 +17,10 @@ class HomeHeader extends Component {
     }
     render() {
         let language = this.props.language
-        console.log('check language:',language)
+
+        console.log('check userInfo:',this.props.userInfo)
+
+        // console.log('check language:',language)
 
         // const { isLoggedIn } = this.props;
         // let linkToRedirect = isLoggedIn ? '/system/user-manage' : '/home';
@@ -106,6 +109,7 @@ class HomeHeader extends Component {
 const mapStateToProps = state => {
     return {
         language: state.app.language,
+        userInfo:   state.user.userInfo,
         isLoggedIn: state.user.isLoggedIn
     };
 };

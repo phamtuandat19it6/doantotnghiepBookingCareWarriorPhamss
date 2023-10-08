@@ -5,6 +5,7 @@ import * as actions from "../../store/actions";
 import Navigator from '../../components/Navigator';
 import { adminMenu } from './menuApp';
 import './Header.scss';
+import { FormattedMessage } from 'react-intl';
 
 class Header extends Component {
 
