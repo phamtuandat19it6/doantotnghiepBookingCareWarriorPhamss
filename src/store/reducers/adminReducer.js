@@ -34,7 +34,7 @@ const adminReducer = (state = initialState, action) => {
         case actionTypes.FETCH_POSITION_SUCCESS:
             state.positions = action.data
             state.isLoadingGender = false;
-            console.log('fire fetch position success:',action)
+            // console.log('fire fetch position success:',action)
             return {
                 ...state,
 
@@ -51,7 +51,7 @@ const adminReducer = (state = initialState, action) => {
         case actionTypes.FETCH_ROLE_SUCCESS:
             state.roles = action.data
             state.isLoadingGender = false;
-            console.log('fire fetch role success:',action)
+            // console.log('fire fetch role success:',action)   
             return {
                 ...state,
 
