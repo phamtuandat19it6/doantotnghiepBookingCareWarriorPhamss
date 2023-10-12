@@ -23,6 +23,9 @@ class TableUserManange extends Component {
     handleDeleteUser= (user) => {
         this.props.deleteAUserRedux(user.id)
     }
+    handleEditUser = (user) => {
+        this.props.handleEditUserFromParentKey(user)
+    }
     render() {
         let arrUsers = this.state.usersRedux;
         return (
@@ -44,11 +47,13 @@ class TableUserManange extends Component {
                             <td>{item.lastName}</td>
                             <td>{item.address}</td>
                             <td>
-                                <button className="btn-edit">
+                                <button className="btn-edit"
+                                    onClick={()=>this.handleEditUser(item)}
+                                >
                                     <i className="fas fa-pencil-alt"> </i>
                                 </button>
                                 <button className="btn-delete"
-                                        onClick={()=>this.handleDeleteUser(item)}
+                                    onClick={()=>this.handleDeleteUser(item)}
                                 >
                                     <i className="fas fa-trash"></i>
                                 </button>
@@ -73,7 +78,6 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
         deleteAUserRedux:(id) => dispatch(actions.deleteAUser(id)),
-        createUsersRedux:(data) => dispatch(actions.createNewUser(data))
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(TableUserManange);

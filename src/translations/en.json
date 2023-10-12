@@ -50,7 +50,8 @@
     "position":"Position",
     "image":"Avatar",
     "role":"Role",
-    "save":"save"
+    "save":"Save user",
+    "edit":"Edit user"
 
 
   }
