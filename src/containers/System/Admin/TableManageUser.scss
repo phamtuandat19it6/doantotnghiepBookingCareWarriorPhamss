@@ -1,0 +1,52 @@
+#TableUserManange {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width:100%;
+}
+#TableUserManange td,
+#TableUserManange th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+#TableUserManange tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+#TableUserManange tr:hover {
+    background-color:#ddd;
+}
+#TableUserManange th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align:left;
+    background-color: #04AA6D;
+    color: white;
+}
+.btn-edit {
+    width: 50px;
+    border: none;
+    outline:none;
+    background: transparent;
+    color: orange;
+    &:hover{
+        background-color: transparent !important;
+        color: orange !important;
+    }
+}
+.btn-delete{
+    width : 50px;
+    border: none;
+    outline:none;
+    color: rgb(235,15,15);
+    &:hover{
+        background-color: transparent !important;
+        color: rbg(235, 15,15) !important;
+    }
+}
+.modal-user-container{
+    .modal-header {
+        button.close {
+            color: white;
+            font-size: 20px;
+        }
+    }
+}
