@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Slider from 'react-slick';
 import * as actions from '../../../store/actions';
 import { LANGUAGES, } from '../../../utils';
+import { FormattedMessage } from 'react-intl';
+import HomePage from '../HomePage';
 class OutstandingDoctor extends Component {
     constructor(props){
         super(props)
@@ -23,13 +25,12 @@ class OutstandingDoctor extends Component {
     render() {
         let { language } = this.props;
         let allDoctors = this.state.arrDoctors;
-            allDoctors = allDoctors.concat(allDoctors).concat(allDoctors)
         return (
                 <div className='section-share section-outstanding-doctor'>
                 <div className='section-container'>
                     <div className='section-header'>
-                        <span className='title-section'>Bác sĩ nổi bật tuần qua</span>
-                        <button className='btn-section'>xem thêm</button>
+                        <span className='title-section'><FormattedMessage id={"homepage.outstanding-doctor"}/></span>
+                        <button className='btn-section'><FormattedMessage id={'homepage.more-info'}/></button>
                     </div>
                     <div className="section-body">
                     <Slider {...this.props.settings}>
@@ -40,8 +41,8 @@ class OutstandingDoctor extends Component {
                             if(item.image){
                                 imageBase64 = new Buffer(item.image,'base64').toString('binary');
                             }
-                            let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName}`
-                            let nameEn = `${item.positionData.valueEn}, ${item.firstName} ${item.lastName}`
+                            let nameVi = `${item.positionData.valueVi}. ${item.lastName} ${item.firstName}`
+                            let nameEn = `${item.positionData.valueEn}. ${item.firstName} ${item.lastName}`
                             return(
                                 <div className='section-customize section-outstanding-doctor' key={index}>
                                     <div className='outer-bg'>

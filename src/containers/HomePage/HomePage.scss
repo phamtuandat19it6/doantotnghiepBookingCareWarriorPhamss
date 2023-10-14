@@ -190,7 +190,9 @@
    .slick-next {
        right: -10px !important;
    }
-
+   .slick-disabled {
+        display: none !important;
+   }
 
 
 }

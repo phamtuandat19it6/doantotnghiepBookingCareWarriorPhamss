@@ -19,17 +19,18 @@ class HomePage extends Component {
         const { systemMenuPath,isLoggedIn } = this.props;
         // let linkToRedirect = isLoggedIn ? '/system/user-manage' : '/home';
 
+
         let settings =  {
             dots:false,
-            infinite:true,
+            infinite:false,
             speed:500,
             slidesToShow:4,
-            slidesToScroll:1,
+            slidesToScroll:2,
 
         };
         let settingsHandBook =  {
             dots:false,
-            infinite:true,
+            infinite:false,
             speed:500,
             slidesToShow:2,
             slidesToScroll:1,
