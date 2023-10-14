@@ -16,9 +16,10 @@
         .menu-group-name {
             line-height: 40px;
             padding: 0 15px;
-            border-right: 1px solid $border;
+            box-shadow: 2px 2px 4px 0 #0000004d;
+            -webkit-box-shadow: 2px 2px 4px 0 #0000004d;
             &:first-child {
-                border-left: 1px solid $border;
+                // border-left: 1px solid $border;
             }
         }
         .menu-list {
