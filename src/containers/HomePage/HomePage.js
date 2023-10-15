@@ -39,9 +39,9 @@ class HomePage extends Component {
 
         return (
             <div>
-                {this.props.isLoggedIn && <Header/>}
+                { <Header/>}
 
-                <HomeHeader />
+                <HomeHeader isShowBanner={true}/>
                 <Specialty settings= {settings}/>
                 <OutstandingDoctor settings={settings}/>
                 <MeedicalFacility settings={settings}/>

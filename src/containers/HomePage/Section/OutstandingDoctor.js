@@ -5,6 +5,7 @@ import * as actions from '../../../store/actions';
 import { LANGUAGES, } from '../../../utils';
 import { FormattedMessage } from 'react-intl';
 import HomePage from '../HomePage';
+import { withRouter } from 'react-router';
 class OutstandingDoctor extends Component {
     constructor(props){
         super(props)
@@ -21,6 +22,11 @@ class OutstandingDoctor extends Component {
     }
     componentDidMount(){
         this.props.loadTopDoctors();
+    }
+    handleViewDetailDoctor =(doctor)=>{
+       this.props.history.push(`/detail-doctor/${doctor.id}`)
+        console.log('hoidanit channel view infor:',doctor)
+
     }
     render() {
         let { language } = this.props;
@@ -44,7 +50,7 @@ class OutstandingDoctor extends Component {
                             let nameVi = `${item.positionData.valueVi}. ${item.lastName} ${item.firstName}`
                             let nameEn = `${item.positionData.valueEn}. ${item.firstName} ${item.lastName}`
                             return(
-                                <div className='section-customize section-outstanding-doctor' key={index}>
+                                <div className='section-customize section-outstanding-doctor' key={index} onClick={()=> this.handleViewDetailDoctor(item)}>
                                     <div className='outer-bg'>
                                         <div className="bg-image section-outstanding-doctor"
                                             style={{backgroundImage:`url(${imageBase64})`}}
@@ -79,4 +85,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor));
