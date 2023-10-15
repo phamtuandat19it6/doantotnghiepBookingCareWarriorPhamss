@@ -1,6 +1,14 @@
 .user-redux-body {
     .container{
         margin: 0 auto;
+        .form-row {
+            .form-control {
+                box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+            }
+        }
+        button.btn.ml-3.mb-3.px-3{
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+        }
     }
     .preview-img-container{
         display: flex   ;
