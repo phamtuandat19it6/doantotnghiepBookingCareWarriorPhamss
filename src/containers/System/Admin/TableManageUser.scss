@@ -1,93 +1,129 @@
 #TableUserManange {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family    : Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width:100%;
+    width          : 100%;
 }
+
 #TableUserManange td,
 #TableUserManange th {
-    border: 1px solid #ddd;
+    border : 1px solid #ddd;
     padding: 8px;
 }
-#TableUserManange tr:nth-child(even){
+
+#TableUserManange tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
 #TableUserManange tr:hover {
-    background-color:#ddd;
+    background-color: #ddd;
 }
+
 #TableUserManange th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align:left;
+    padding-top     : 12px;
+    padding-bottom  : 12px;
+    text-align      : left;
     background-color: #04AA6D;
-    color: white;
+    color           : white;
 }
+
 .btn-edit {
-    width: 50px;
-    border: none;
-    outline:none;
+    width     : 50px;
+    border    : none;
+    outline   : none;
     background: transparent;
-    color: orange;
-    &:hover{
+    color     : orange;
+
+    &:hover {
         background-color: transparent !important;
-        color: orange !important;
+        color           : orange !important;
     }
 }
-.btn-delete{
-    width : 50px;
-    border: none;
-    outline:none;
-    color: rgb(235,15,15);
+
+.btn-delete {
+    width           : 50px;
+    border          : none;
+    outline         : none;
+    color           : rgb(235, 15, 15);
     background-color: transparent !important;
-    &:hover{
+
+    &:hover {
         background-color: transparent !important;
-        color: rbg(235, 15,15) !important;
+        color           : rbg(235, 15, 15) !important;
     }
 }
-.modal-user-container{
+
+.modal-user-container {
     .modal-header {
         button.close {
-            color: white;
+            color    : white;
             font-size: 20px;
         }
     }
 }
 
-.manage-doctor-container{
+.manage-doctor-container {
     padding: 5px;
-        .manage-doctor-title{
-        text-align: center;
-        font-size: 20px;
-        margin: 15px 0;
+
+    .manage-doctor-title {
+        text-align    : center;
+        font-size     : 20px;
+        margin        : 15px 0;
         text-transform: uppercase;
-        font-weight: 600;
-        color: #0071ba;
+        font-weight   : 600;
+        color         : #0071ba;
     }
-    .save-content-doctor{
-        margin-top: 20px;
+
+    .save-content-doctor {
+        margin-top   : 20px;
         margin-bottom: 30px;
-        border: none;
-        background: orange;
-        color: #333;
-        border-radius: 3px;
-        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
-        transition: 0.25s linear;
-        cursor: pointer;
-        &:hover{
-            background: #c0bebe;
+        border       : none;
+        background   : orange;
+        color        : white;
+        font-weight  : 700;
+        border-radius: 3px; 
+        box-shadow   : 0px 1px 2px rgba(0, 0, 0, 0.5);
+        transition   : 0.25s linear;
+        cursor       : pointer;
+
+        &:hover {
+            background: rgb(205, 135, 5);
             transition: 0.25s linear;
         }
 
     }
+
+    .create-content-doctor {
+        margin-top   : 20px;
+        margin-bottom: 30px;
+        border       : none;
+        background   : #0069d9;
+        color        : white;
+        border-radius: 3px;
+        font-weight  : 700;
+        box-shadow   : 0px 1px 2px rgba(0, 0, 0, 0.5);
+        transition   : 0.25s linear;
+        cursor       : pointer;
+
+        &:hover {
+            background: #03458c;
+            color     : white;
+            transition: 0.25s linear;
+        }
+
+    }
+
     .more-infor {
-        margin: 0 auto !important;
+        margin         : 0 auto !important;
         justify-content: center !important;
     }
-    .manage-doctor-editor{
-        display: flex;
-        justify-content: center ;
-        padding: 0 10px;
+
+    .manage-doctor-editor {
+        display        : flex;
+        justify-content: center;
+        padding        : 0 10px;
     }
-    .rc-md-editor{
+
+    .rc-md-editor {
         padding: 0 !important;
     }
 }

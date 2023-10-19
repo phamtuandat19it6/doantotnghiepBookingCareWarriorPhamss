@@ -3,5 +3,10 @@
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
   },
-  "emmet.preferences": {}
+  "emmet.preferences": {},
+  "[markdown]": {
+    "editor.formatOnSave": true
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "MikeBovenlander.formate"
 }

@@ -7,10 +7,11 @@ import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
 import Select from 'react-select';
-import { LANGUAGES } from '../../../utils';
+import { CRUD_ACTIONS, LANGUAGES } from '../../../utils';
 import {toast} from "react-toastify"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {getDetailInforDoctor} from '../../../services/userSevice'
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 class ManageDoctor extends Component {
@@ -21,7 +22,8 @@ class ManageDoctor extends Component {
             contentHTML:'',
             selectedDoctor:null,
             description:'',
-            listDoctors:[]
+            listDoctors:[],
+            hasOldData:false
 
         }
     }
@@ -50,20 +52,37 @@ class ManageDoctor extends Component {
     }
 
     handleSaveContentMarkdown = () =>{
+        let {hasOldData} = this.state;
+        this.props.saveInforDortor({
+            contentHTML: this.state.contentHTML,
+            contentMarkdown: this.state.contentMarkdown,
+            description: this.state.description,
+            doctorId:this.state.selectedDoctor.value,
+            action: hasOldData === true ? CRUD_ACTIONS.EDIT :CRUD_ACTIONS.CREATE
 
-            this.props.saveInforDortor({
-                contentHTML: this.state.contentHTML,
-                contentMarkdown: this.state.contentMarkdown,
-                description: this.state.description,
-                doctorId:this.state.selectedDoctor.value
-
-            })
+        })
 
     }
-    handleChange = (selectedDoctor) => {
-        this.setState({ selectedDoctor }, () =>
-          console.log(`Option selected:`, this.state.selectedDoctor.value)
-        );
+    handleChangeSelect = async (selectedDoctor) => {
+        this.setState({ selectedDoctor });
+        let res = await getDetailInforDoctor(selectedDoctor.value)
+        if(res && res.errCode === 0 && res.data && res.data.Markdown){
+            let Markdown = res.data.Markdown;
+            this.setState({
+                contentHTML: Markdown.contentHTML,
+                contentMarkdown: Markdown.contentMarkdown,
+                description: Markdown.description,
+                hasOldData:true
+            })
+        }else{
+            this.setState({
+                contentHTML: '',
+                contentMarkdown:'',
+                description: '',
+                hasOldData:false
+            })
+        }
+        console.log(`Option selected:`, res)
       };
     handleOnChangeDesc = (event) => {
         this.setState({
@@ -87,7 +106,7 @@ class ManageDoctor extends Component {
         return  result;
     }
     render() {
-        console.log('hoidanitChanel:',this.state)
+        let {hasOldData} = this.state;
         return (
             <div className='manage-doctor-container col-12'>
                 <div className='manage-doctor-title'>
@@ -98,7 +117,7 @@ class ManageDoctor extends Component {
                         <label htmlFor="">Chọn bác sĩ:</label>
                         <Select
                             value={this.state.selectedDoctor}
-                            onChange={this.handleChange}
+                            onChange={this.handleChangeSelect}
                             options={this.state.listDoctors}
                         />
                     </div>
@@ -118,12 +137,15 @@ class ManageDoctor extends Component {
                         renderHTML={text => mdParser.render(text)}
                         onChange={this.handleEditorChange}
                         className='col-11'
+                        value={this.state.contentMarkdown}
                     />
                 </div>
                 <button
                     onClick={()=>this.handleSaveContentMarkdown()}
-                    className='save-content-doctor ml-5'>
-                    Lưu thông tin
+                    className={hasOldData === true ? 'save-content-doctor ml-5 px-3 py-1':'create-content-doctor ml-5 px-3 py-1'}>
+                    {hasOldData === true ?
+                        <span> Lưu thông tin </span> : <span> Tạo thông tin</span>
+                    }
                 </button>
              </div>
         );

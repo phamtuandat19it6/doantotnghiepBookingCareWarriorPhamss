@@ -24,8 +24,9 @@ class OutstandingDoctor extends Component {
         this.props.loadTopDoctors();
     }
     handleViewDetailDoctor =(doctor)=>{
-       this.props.history.push(`/detail-doctor/${doctor.id}`)
-        console.log('hoidanit channel view infor:',doctor)
+        if(this.props.history){
+            this.props.history.push(`/detail-doctor/${doctor.id}`)
+        }
 
     }
     render() {

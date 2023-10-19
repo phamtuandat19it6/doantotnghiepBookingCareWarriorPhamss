@@ -90,7 +90,7 @@ class UserRedux extends Component {
             })
         }
     }
-    handleOnchangeImage = async     (event) => {
+    handleOnchangeImage = async (event) => {
         let data = event.target.files;
         let file = data[0];
         if(file){
