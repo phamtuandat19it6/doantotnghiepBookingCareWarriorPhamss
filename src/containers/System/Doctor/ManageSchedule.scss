@@ -9,26 +9,24 @@
     }
 
     .pick-hour-container {
+        margin-top     : 38px;
         height         : 100px;
         display        : flex;
         flex-wrap      : wrap;
         gap            : 16px;
         justify-content: center;
-        align-items    : center;
 
         .btn-schedule {
             border          : 1px solid grey;
             background-color: #fff;
             box-shadow      : 0px 0.1px 0.1px rgba(0, 0, 0, 0.5);
+            font-weight     : 500;
+            font-family     : 'Montserrat', sans-serif;
 
             &.active {
                 background-color: orange;
             }
         }
-
-
-
-
     }
 
     .btn-primary {

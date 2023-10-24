@@ -10,7 +10,8 @@ import DatePicker from '../../../components/Input/DatePicker';
 import moment from 'moment';
 import { toast } from "react-toastify";
 import _ from 'lodash';
-import {dateFormat} from '../../../utils/constant'
+import {dateFormat} from '../../../utils/constant';
+import { saveBulkScheduleDoctor} from '../../../services/userSevice';
 class ManageSchedule extends Component {
     constructor(props){
         super(props);
@@ -79,7 +80,7 @@ class ManageSchedule extends Component {
             })
         }
     }
-    handleSaveSchedule=()=>{
+    handleSaveSchedule= async()=>{
         let {rangeTime,selectedDoctor,currentDate} =this.state;
         let result =[];
         if(selectedDoctor && _.isEmpty(selectedDoctor)){
@@ -90,15 +91,18 @@ class ManageSchedule extends Component {
             toast.error('Invalid Date!');
             return;
         }
-        let formatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
+        // let formatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
+        // let formatedDate = moment(currentDate).unix();
+        let formatedDate = new Date(currentDate).getTime();
+
         if(rangeTime && rangeTime.length > 0 ){
             let selectedTime = rangeTime.filter(item=>item.isSelected===true);
             if(selectedTime && selectedTime.length > 0){
-                selectedTime.map(time => {
+                selectedTime.map(schedule => {
                     let object = {};
                     object.doctorId = selectedDoctor.value;
                     object.date = formatedDate;
-                    object.time = time.keyMap;
+                    object.timeType = schedule.keyMap;
                     result.push(object);
                 })
             }else{
@@ -106,8 +110,12 @@ class ManageSchedule extends Component {
                 return;
             }
         }
-        console.log('check result:result',result)
-        return result
+        let res = await saveBulkScheduleDoctor({
+            arrSchedule:result,
+            doctorId:selectedDoctor.value,
+            formatedDate: formatedDate
+        })
+        console.log('check res:saveBulkScheduleDoctor',res)
     }
     handleOnchangeDatePicker = (date) => {
         this.setState({
@@ -164,7 +172,7 @@ class ManageSchedule extends Component {
                         </div>
                         <div className="col-12">
                             <button
-                            className='btn btn-primary btn-save-schedule px-2 my-4'
+                            className='btn btn-primary btn-save-schedule px-3 '
                             onClick={()=> this.handleSaveSchedule()}
                             >
                                 <FormattedMessage id = "manage-schedule.save"/>
