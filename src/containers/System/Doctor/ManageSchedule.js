@@ -113,8 +113,10 @@ class ManageSchedule extends Component {
         let res = await saveBulkScheduleDoctor({
             arrSchedule:result,
             doctorId:selectedDoctor.value,
-            formatedDate: formatedDate
+            formatedDate:formatedDate,
+
         })
+        toast.success('Create Schedule Succeed!');
         console.log('check res:saveBulkScheduleDoctor',res)
     }
     handleOnchangeDatePicker = (date) => {
