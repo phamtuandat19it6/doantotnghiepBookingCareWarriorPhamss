@@ -2,11 +2,11 @@
   "homeheader": {
     "specialty": "Medical specialty",
     "searchdoctor": "Find a doctor by specialty",
-    "health-facility": "health facilities",
+    "health-facility": "Health facilities",
     "select-room": "Choose a hospital or clinic",
     "doctor": "Doctor",
     "select-doctor": "Choose a outstanding doctor",
-    "fee": "health check package",
+    "fee": "Health check package",
     "check-health": "General health check",
     "support": "Support",
     "welcome":"Welcome, "
@@ -66,6 +66,14 @@
     "choose-date":"Choose Date",
     "choose-doctor":"Choose doctor",
     "save":"Save info"
+  },
+  "patient":{
+    "detail-doctor":{
+      "schedule":"Schedule",
+      "no-schedule": "The doctor does not have an schedule during this time, please choose another time!",
+      "book-free":" and book (free)",
+      "choose":"Choose "
+    }
   }
 
 }
