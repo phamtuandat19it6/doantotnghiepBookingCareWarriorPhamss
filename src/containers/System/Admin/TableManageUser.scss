@@ -80,7 +80,7 @@
         background   : orange;
         color        : white;
         font-weight  : 700;
-        border-radius: 3px; 
+        border-radius: 3px;
         box-shadow   : 0px 1px 2px rgba(0, 0, 0, 0.5);
         transition   : 0.25s linear;
         cursor       : pointer;
@@ -115,6 +115,11 @@
     .more-infor {
         margin         : 0 auto !important;
         justify-content: center !important;
+    }
+
+    .more-infor-extra {
+        justify-content: center;
+        margin         : 0 auto !important;
     }
 
     .manage-doctor-editor {
