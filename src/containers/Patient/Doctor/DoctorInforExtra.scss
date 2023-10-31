@@ -1,0 +1,84 @@
+.doctor-infor-extra-container {
+    padding-left: 15px;
+    width       : 82%;
+
+    .content-up {
+        margin-bottom : 8px;
+        border        : none;
+        border-bottom : solid 1px #e6e4e4;
+        padding-bottom: 8px;
+
+        .text-address {
+            font-family   : 'Times New Roman', Times, serif;
+            font-weight   : 600;
+            color         : #666;
+            font-size     : 15px;
+            text-transform: uppercase;
+        }
+
+        .name-clinic {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 600;
+            color      : #333;
+            font-size  : 15px;
+            margin     : 5px 0;
+        }
+
+        .name-address {
+            font-family: 'Times New Roman', Times, serif;
+            color      : #666;
+            font-size  : 15px;
+        }
+    }
+
+    .content-down {
+        .text-price {
+            font-family   : 'Times New Roman', Times, serif;
+            font-weight   : 600;
+            color         : #666;
+            font-size     : 15px;
+            text-transform: uppercase;
+        }
+
+        .booking-price {}
+
+        .see-more {
+            color : #45c3d2;
+            cursor: pointer;
+        }
+
+        .bookingcare-price {
+            font-family   : 'Times New Roman', Times, serif;
+            font-weight   : 600;
+            color         : #666;
+            font-size     : 15px;
+            text-transform: uppercase;
+        }
+
+        .price-note {
+            color           : #666;
+            padding         : 5px 4px;
+            background-color: #f5f5f5;
+            border          : 1px solid #ddd;
+
+            .price-detail {
+                padding        : 1px 15px;
+                justify-content: space-between;
+            }
+        }
+
+        .note {
+            color           : #666;
+            padding         : 5px 4px;
+            background-color: #e6e4e4;
+            border          : 1px solid #ddd;
+        }
+
+        .hide-price {
+            display   : block;
+            margin-top: 8px;
+            color     : #45c3d2;
+            cursor    : pointer;
+        }
+    }
+}
