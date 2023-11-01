@@ -70,9 +70,7 @@ class ModalEditUser extends Component {
         let isValid = this.checkValidateInput();
         console.log(isValid)
         if (isValid === true) {
-            console.log('check props child', this.props)
             this.props.editUser(this.state);
-            console.log('data modal',this.state)
         }
     }
     render() {

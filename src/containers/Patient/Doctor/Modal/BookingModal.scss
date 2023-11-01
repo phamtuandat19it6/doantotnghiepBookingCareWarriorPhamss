@@ -1,0 +1,82 @@
+.booking-modal-content {
+    height        : 500px;
+    display       : flex;
+    flex-direction: column;
+
+    .booking-modal-header {
+        padding         : 10px;
+        display         : flex;
+        flex-direction  : row;
+        justify-content : space-between;
+        background-color: #0071ba;
+
+        .modal-header-title {
+            font-weight: 600;
+            font-size  : 15px;
+            color      : rgb(249, 250, 253);
+        }
+
+        i {
+            cursor: pointer;
+            color : rgb(180, 194, 236);
+
+            &:hover {
+                color     : rgb(127, 153, 231);
+                transition: linear .25s;
+            }
+        }
+
+    }
+
+    .booking-modal-body {
+        height : 100%;
+        padding: 15px;
+
+        .price {
+            margin-bottom: 5px;
+        }
+    }
+
+    .booking-modal-footer {
+        display        : flex;
+        justify-content: flex-end;
+        padding        : 10px;
+        gap            : 15px;
+        border-top     : 1px solid #ccc;
+
+        button {
+            padding      : 5px 10px;
+            border-radius: 3px;
+            outline      : none;
+            border       : none;
+            cursor       : pointer;
+            font-weight  : 600;
+        }
+
+        .btn-confirm {
+            background-color: rgb(11, 109, 207);
+            color           : rgb(246, 248, 250);
+
+            &:hover {
+                background-color: rgb(10, 85, 161);
+                transition      : linear .25s;
+            }
+        }
+
+        .btn-cancle {
+            background-color: #605e5e;
+            color           : #fbf7f7;
+
+            &:hover {
+                background-color: #3a3838;
+                transition      : linear .25s;
+            }
+        }
+    }
+}
+
+.modal.fade.show {
+    width    : 800px !important;
+    height   : 550px !important;
+    transform: translate(50%, 10%) !important;
+}

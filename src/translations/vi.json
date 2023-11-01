@@ -74,7 +74,7 @@
     },
     "extra-infor-doctor":{
       "text-address":"Địa chỉ khám",
-      "price":"Giá Khám",
+      "text-price":"Giá Khám:",
       "detail":"Xem chi tiết",
       "payment":"Người bệnh có thể thanh toán chi phí trực tiếp hoặc bằng hình thức: ",
       "hide-price":"Ẩn bảng giá"

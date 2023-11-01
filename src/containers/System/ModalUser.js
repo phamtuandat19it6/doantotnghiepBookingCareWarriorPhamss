@@ -68,9 +68,7 @@ class ModalUser extends Component {
         let isValid = this.checkValidateInput();
         console.log(isValid)
         if (isValid === true) {
-            console.log('check props child', this.props)
             this.props.createNewUser(this.state);
-            console.log('data modal',this.state)
         }
     }
     render() {
@@ -81,55 +79,56 @@ class ModalUser extends Component {
                 className='modal-user-container'
                 size="lg"
             >
-                <ModalHeader toggle={() => {this.toggle()}}> Create a new user </ModalHeader>
-                <ModalBody>
+            <ModalHeader toggle={() => {this.toggle()}}> Create a new user </ModalHeader>
+
+            <ModalBody>
                 <div className='container'>
                     <div className='row'>
                         <div className='form-row'>
-                        <div className='form-group col-6'>
-                            <label htmlFor="inputEmail4">Email</label>
-                            <input
-                                onChange={(event) => { this.handleOnchangeInput(event, "email") }}
-                                type="email"
-                                className='form-control'
-                                placeholder="Email"
-                                name="email"
-                                value={this.state.email}
-                            />
-                        </div>
-                        <div className='form-group col-6'>
-                            <label htmlFor="inputPassword4">Password</label>
-                            <input
-                                onChange={(event) => { this.handleOnchangeInput(event, "password") }}
-                                type="password" className='form-control' placeholder="Password"
-                                name="password"
-                                value={this.state.password}
-                            />
-                        </div>
+                            <div className='form-group col-6'>
+                                <label htmlFor="inputEmail4">Email</label>
+                                <input
+                                    onChange={(event) => { this.handleOnchangeInput(event, "email") }}
+                                    type="email"
+                                    className='form-control'
+                                    placeholder="Email"
+                                    name="email"
+                                    value={this.state.email}
+                                />
+                            </div>
+                            <div className='form-group col-6'>
+                                <label htmlFor="inputPassword4">Password</label>
+                                <input
+                                    onChange={(event) => { this.handleOnchangeInput(event, "password") }}
+                                    type="password" className='form-control' placeholder="Password"
+                                    name="password"
+                                    value={this.state.password}
+                                />
+                            </div>
                         </div>
                         <div className='form-row'>
                             <div className='form-group col-6'>
-                            <label htmlFor="inputEmail4">First name</label>
-                            <input
-                                onChange={(event) => { this.handleOnchangeInput(event, "firstName") }}
-                                type="text"
-                                className='form-control'
-                                placeholder="First name"
-                                name="firstName"
-                                value={this.state.firstName}
-                            />
-                        </div>
-                        <div className='form-group col-6'>
-                            <label htmlFor="inputPassword4">Last name</label>
-                            <input
-                                onChange={(event) => { this.handleOnchangeInput(event, "lastName") }}
-                                type="text"
-                                className='form-control'
-                                placeholder="Last name"
-                                name="lastName"
-                                value={this.state.lastName}
-                            />
-                        </div>
+                                <label htmlFor="inputEmail4">First name</label>
+                                <input
+                                    onChange={(event) => { this.handleOnchangeInput(event, "firstName") }}
+                                    type="text"
+                                    className='form-control'
+                                    placeholder="First name"
+                                    name="firstName"
+                                    value={this.state.firstName}
+                                />
+                            </div>
+                            <div className='form-group col-6'>
+                                <label htmlFor="inputPassword4">Last name</label>
+                                <input
+                                    onChange={(event) => { this.handleOnchangeInput(event, "lastName") }}
+                                    type="text"
+                                    className='form-control'
+                                    placeholder="Last name"
+                                    name="lastName"
+                                    value={this.state.lastName}
+                                />
+                            </div>
                         </div>
                         <div className='form-group'>
                             <label htmlFor="inputAddress">Address</label>
@@ -148,11 +147,13 @@ class ModalUser extends Component {
                     <Button
                         color="primary px-3"
                         onClick={() => { this.handleAddNewUser() }}>
-                        Add user</Button>{' '}
+                        Add user
+                    </Button>{' '}
                     <Button
                         color="secondary px-3"
                         onClick={() => { this.toggle() }}>
-                        Cancel</Button>
+                        Cancel
+                    </Button>
                 </ModalFooter>
            </Modal>
         )

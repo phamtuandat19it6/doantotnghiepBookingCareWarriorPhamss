@@ -6,34 +6,30 @@ import {getExtraDoctorById} from '../../../services/userSevice';
 import { FormattedMessage } from 'react-intl';
 import { NumericFormat } from 'react-number-format';
 class DoctorInforExtra extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        isShowDetail:false,
-        extraInfor:{}
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            isShowDetail:false,
+            extraInfor:{}
+        };
   }
-  async componentDidMount() {
+async componentDidMount() {
     let {language} = this.props;
 
-  }
-  async componentDidUpdate (prevProps, prevState, snapshot) {
+}
+async componentDidUpdate (prevProps, prevState, snapshot) {
     if(prevProps.language !== this.props.language){
 
     }
     if(prevProps.doctorIdFromParent !== this.props.doctorIdFromParent){
-      let res = await getExtraDoctorById(this.props.doctorIdFromParent)
-      if(res && res.errCode === 0){
-        this.setState({
-          extraInfor:res.data
-        })
-      }
+        let res = await getExtraDoctorById(this.props.doctorIdFromParent)
+        if(res && res.errCode === 0){
+            this.setState({
+                extraInfor:res.data
+            })
+        }
     }
-  };
-
-
-
-
+};
 showHideDetailPrice= (status)=>{
     this.setState({
         isShowDetail:status
@@ -56,63 +52,60 @@ showHideDetailPrice= (status)=>{
                     {isShowDetail===false &&
                     <>
                     <div>
-                       <span className="text-price"><FormattedMessage id ="patient.extra-infor-doctor.price"/>:</span>
+                       <span className="text-price"><FormattedMessage id ="patient.extra-infor-doctor.text-price"/></span>
                        {extraInfor && extraInfor.priceData &&
-                         <span className="booking-price">
-                          <NumericFormat
-                              className="numberic"
-                              value={language === LANGUAGES.VI ? extraInfor.priceData.valueVi :extraInfor.priceData.valueEn}
-                              suffix=""
-                              thousandSeparator=","
-                              displayType="text"
+                        <span className="booking-price">
+                            <NumericFormat
+                            className="numberic"
+                            value={language === LANGUAGES.VI ? extraInfor.priceData.valueVi :extraInfor.priceData.valueEn}
+                            suffix=""
+                            thousandSeparator=","
+                            displayType="text"
                             />
-                           {language === LANGUAGES.VI ?<sup>đ </sup>: `$ ` }
-                          </span>
+                            {language === LANGUAGES.VI ?<sup>đ </sup>: `$ ` }
+                        </span>
                         }
-
-                       <span className="see-more"
-                       onClick={()=>this.showHideDetailPrice(true)}
-                       >
-                       <FormattedMessage id ="patient.extra-infor-doctor.detail"/>
+                        <span className="see-more" onClick={()=>this.showHideDetailPrice(true)} >
+                            <FormattedMessage id ="patient.extra-infor-doctor.detail"/>
                         </span>
                     </div>
                     </>
                     }
                     {isShowDetail === true &&
                     <>
-                    <div className="bookingcare-price" ><FormattedMessage id ="patient.extra-infor-doctor.price"/>:</div>
+                    <div className="bookingcare-text-price" >
+                        <FormattedMessage id ="patient.extra-infor-doctor.text-price"/>
+                    </div>
                     <div className="price-note" >
                         <div className="price-detail row">
-                            <span className="text-price" ><FormattedMessage id ="patient.extra-infor-doctor.price"/></span>
+                            <span className="text-price" >
+                                <FormattedMessage id ="patient.extra-infor-doctor.text-price"/>
+                            </span>
                             {extraInfor && extraInfor.priceData &&
-                              <span className="booking-price">
+                            <span className="booking-price">
                                 <NumericFormat
                                     className="numberic"
                                     value={language === LANGUAGES.VI ? extraInfor.priceData.valueVi :extraInfor.priceData.valueEn}
                                     suffix=""
                                     thousandSeparator=","
                                     displayType="text"
-                                  />
-                                 {language === LANGUAGES.VI ?<sup>đ </sup>: `$ ` }
-                                </span>
+                                />
+                                {language === LANGUAGES.VI ?<sup>đ </sup>: `$ ` }
+                            </span>
                             }
                         </div>
-                        <div>
-                        {extraInfor && extraInfor.note ? extraInfor.note : '' }
+                        <div className="note">
+                            {extraInfor && extraInfor.note ? extraInfor.note : '' }
                         </div>
                     </div>
-
                     {extraInfor && extraInfor.paymentData &&
-                    <div className="note" >
-                   <FormattedMessage id ="patient.extra-infor-doctor.payment"/>
-                    {language === LANGUAGES.VI ? extraInfor.paymentData.valueVi : extraInfor.paymentData.valueEn }
+                    <div className="note-payment" >
+                        <FormattedMessage id ="patient.extra-infor-doctor.payment"/>
+                        {language === LANGUAGES.VI ? extraInfor.paymentData.valueVi : extraInfor.paymentData.valueEn }
                     </div>
                     }
-
-                    <span className="hide-price"
-                     onClick={()=>this.showHideDetailPrice(false)}
-                    >
-                    <FormattedMessage id ="patient.extra-infor-doctor.hide-price"/>
+                    <span className="hide-price" onClick={()=>this.showHideDetailPrice(false)} >
+                        <FormattedMessage id ="patient.extra-infor-doctor.hide-price"/>
                     </span>
                     </>
                     }
@@ -126,9 +119,7 @@ const mapStateToProps = (state) => {
     language: state.app.language,
   };
 };
-
 const mapDispatchToProps = (dispatch) => {
   return {};
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorInforExtra);
