@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./DoctorInforExtra.scss";
 import { LANGUAGES } from "../../../utils";
-import {getScheduleDoctorByDate} from '../../../services/userSevice';
+import {getExtraDoctorById} from '../../../services/userSevice';
 import { FormattedMessage } from 'react-intl';
-class DoctorSchedule extends Component {
+import { NumericFormat } from 'react-number-format';
+class DoctorInforExtra extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        isShowDetail:false
+        isShowDetail:false,
+        extraInfor:{}
     };
   }
   async componentDidMount() {
@@ -20,7 +22,12 @@ class DoctorSchedule extends Component {
 
     }
     if(prevProps.doctorIdFromParent !== this.props.doctorIdFromParent){
-
+      let res = await getExtraDoctorById(this.props.doctorIdFromParent)
+      if(res && res.errCode === 0){
+        this.setState({
+          extraInfor:res.data
+        })
+      }
     }
   };
 
@@ -34,52 +41,81 @@ showHideDetailPrice= (status)=>{
 }
   render() {
     let {language} = this.props
-    let {isShowDetail} = this.state
+    let {isShowDetail,extraInfor} = this.state
+
+
+    console.log("this state:",this.state)
         return (
             <div className="doctor-infor-extra-container">
                 <div className="content-up">
-                    <div className="text-address">Địa chỉ khám</div>
-                    <div className="name-clinic">Phòng Khám chuyên Khoa da liễu</div>
-                    <div className="name-address">259 Phố Huế - Hai Bà Trưng - Hà Nội</div>
+                    <div className="text-address"><FormattedMessage id ="patient.extra-infor-doctor.text-address"/>:</div>
+                    <div className="name-clinic">{extraInfor && extraInfor.nameClinic ? extraInfor.nameClinic : '' }</div>
+                    <div className="name-address">{extraInfor && extraInfor.addressClinic ? extraInfor.addressClinic : '' }</div>
                 </div>
                 <div className="content-down">
                     {isShowDetail===false &&
                     <>
                     <div>
-                       <span className="text-price">Giá khám:</span>
-                        <span className="booking-price">250.000<sup>đ</sup></span>.
+                       <span className="text-price"><FormattedMessage id ="patient.extra-infor-doctor.price"/>:</span>
+                       {extraInfor && extraInfor.priceData &&
+                         <span className="booking-price">
+                          <NumericFormat
+                              className="numberic"
+                              value={language === LANGUAGES.VI ? extraInfor.priceData.valueVi :extraInfor.priceData.valueEn}
+                              suffix=""
+                              thousandSeparator=","
+                              displayType="text"
+                            />
+                           {language === LANGUAGES.VI ?<sup>đ </sup>: `$ ` }
+                          </span>
+                        }
+
                        <span className="see-more"
                        onClick={()=>this.showHideDetailPrice(true)}
                        >
-                        Xem chi tiết
+                       <FormattedMessage id ="patient.extra-infor-doctor.detail"/>
                         </span>
                     </div>
                     </>
                     }
                     {isShowDetail === true &&
                     <>
-                    <div className="bookingcare-price" >Giá Khám: .</div>
+                    <div className="bookingcare-price" ><FormattedMessage id ="patient.extra-infor-doctor.price"/>:</div>
                     <div className="price-note" >
                         <div className="price-detail row">
-                            <span>Giá khám</span>
-                            <span className="booking-price">250.000<sup>đ</sup></span>
+                            <span className="text-price" ><FormattedMessage id ="patient.extra-infor-doctor.price"/></span>
+                            {extraInfor && extraInfor.priceData &&
+                              <span className="booking-price">
+                                <NumericFormat
+                                    className="numberic"
+                                    value={language === LANGUAGES.VI ? extraInfor.priceData.valueVi :extraInfor.priceData.valueEn}
+                                    suffix=""
+                                    thousandSeparator=","
+                                    displayType="text"
+                                  />
+                                 {language === LANGUAGES.VI ?<sup>đ </sup>: `$ ` }
+                                </span>
+                            }
                         </div>
                         <div>
-                        Được ưu tiên khi đặt qua BookingCare. Giá khám cho người nước ngoài là 30 USD
+                        {extraInfor && extraInfor.note ? extraInfor.note : '' }
                         </div>
                     </div>
+
+                    {extraInfor && extraInfor.paymentData &&
                     <div className="note" >
-                        Người bệnh có thể thanh toán chi phí bằng hình thức tiền mặt và quẹt thẻ
+                   <FormattedMessage id ="patient.extra-infor-doctor.payment"/>
+                    {language === LANGUAGES.VI ? extraInfor.paymentData.valueVi : extraInfor.paymentData.valueEn }
                     </div>
+                    }
+
                     <span className="hide-price"
                      onClick={()=>this.showHideDetailPrice(false)}
                     >
-                    Ẩn bảng giá
+                    <FormattedMessage id ="patient.extra-infor-doctor.hide-price"/>
                     </span>
                     </>
                     }
-
-
                 </div>
             </div>
         )
@@ -95,4 +131,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DoctorSchedule);
+export default connect(mapStateToProps, mapDispatchToProps)(DoctorInforExtra);

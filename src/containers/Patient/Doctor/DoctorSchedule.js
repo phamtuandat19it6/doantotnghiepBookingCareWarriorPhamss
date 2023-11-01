@@ -80,7 +80,6 @@ class DoctorSchedule extends Component {
 
         let date = event.target.value
         let res = await getScheduleDoctorByDate(doctorId,date);
-        console.log('check res',res)
         if(res && res.errCode === 0 ){
             this.setState({
                 allAvailableTime: res.data ? res.data : []

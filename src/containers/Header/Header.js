@@ -12,7 +12,6 @@ class Header extends Component {
         this.props.changeLanguageAppRedux(language)
     }
     componentDidMount(){
-        console.log('hoi dan it channel userinfor:',this.props.userInfo)
     }
     render() {
         const { processLogout, language, userInfo   } = this.props;
@@ -24,7 +23,7 @@ class Header extends Component {
                     <div className="header-tabs-container">
                         <Navigator menus={adminMenu} />
                     </div>
-                    
+
                     {/* nút logout */}
                     <div className="btn btn-logout" onClick={processLogout} title='Log out'>
                         <i className="fas fa-sign-out-alt"></i>

@@ -40,7 +40,15 @@
             text-transform: uppercase;
         }
 
-        .booking-price {}
+        .booking-price {
+            padding-left: 5px;
+            font-size   : 15px;
+            color       : #666;
+
+            .numberic {
+                padding-right: 1px;
+            }
+        }
 
         .see-more {
             color : #45c3d2;
@@ -64,6 +72,12 @@
             .price-detail {
                 padding        : 1px 15px;
                 justify-content: space-between;
+
+                .text-price {
+                    font-size     : 16px;
+                    font-weight   : 500;
+                    text-transform: none;
+                }
             }
         }
 

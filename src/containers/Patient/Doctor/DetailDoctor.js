@@ -32,7 +32,6 @@ class DetailDoctor extends Component {
   }
   componentDidUpdate = (prevProps, prevState, snapshot) => {};
   render() {
-    console.log("hoi dan it chanel:state", this.state);
     let { detailDoctor } = this.state;
     let { language } = this.props;
     let nameVi = "",
