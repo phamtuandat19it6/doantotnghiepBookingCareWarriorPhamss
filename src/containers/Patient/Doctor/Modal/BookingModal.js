@@ -4,6 +4,8 @@ import "./BookingModal.scss";
 import { LANGUAGES } from "../../../../utils/constant";
 import { FormattedMessage } from 'react-intl';
 import {  Modal } from 'reactstrap';
+import ProfileDoctor from "../ProfileDoctor";
+import _ from "lodash";
 class BookingModal extends Component {
     constructor(props) {
         super(props);
@@ -28,12 +30,13 @@ showHideDetailPrice= (status)=>{
 
   render() {
     let {language,showModal,handleClick,dataTime} = this.props
-
+    let doctorId = ''
+    if(dataTime && !_.isEmpty(dataTime)){
+        doctorId = dataTime.doctorId
+    }
+    console.log('doctorId:',doctorId)
         return (
             <Modal
-            closeTimeoutMS={2000}
-            ariaHideApp={false}
-            onRequestClose={handleClick}
             isOpen={showModal}
             size="lg"
             centered
@@ -45,9 +48,10 @@ showHideDetailPrice= (status)=>{
                     </div>
                     <div className="booking-modal-body">
                         {/* {JSON.stringify(dataTime)} */}
-                        <div className="doctor-infor"></div>
-                        <div className="price">
-                            Giá khám 500.000VND
+                        <div className="doctor-infor">
+                            <ProfileDoctor
+                            doctorId={doctorId}
+                            />
                         </div>
                         <div className="row">
                             <div className="col-6 form-group">

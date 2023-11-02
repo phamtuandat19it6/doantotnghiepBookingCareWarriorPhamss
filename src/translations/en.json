@@ -76,7 +76,7 @@
     },
     "extra-infor-doctor":{
       "text-address":"Address of clinic",
-      "text-price":"Examination price:",
+      "text-price":"Examination price: ",
       "detail":"See details",
       "payment":"The patient can pay the cost in the from of: ",
       "hide-price":"Hide price list"
