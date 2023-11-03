@@ -5,6 +5,8 @@ import { LANGUAGES } from "../../../utils";
 import { FormattedMessage } from 'react-intl';
 import {getProfileDoctorById} from '../../../services/userSevice';
 import { NumericFormat } from 'react-number-format';
+import moment, { unix } from 'moment';
+import lacalization from 'moment/locale/vi';
 class ProfileDoctor extends Component {
     constructor(props) {
         super(props);
@@ -13,7 +15,6 @@ class ProfileDoctor extends Component {
         };
     }
     async componentDidMount() {
-        let {language} = this.props;
         let res = await this.getProfileDoctor(this.props.doctorId)
         console.log('res',res)
         this.setState({
@@ -36,15 +37,28 @@ class ProfileDoctor extends Component {
         }
         return result
     }
+    capitalizeFirstLetter(string){
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 
     render() {
-        let {language} = this.props
+        let {language,isShowDescription,dataTime} = this.props
         let {dataProfile} = this.state
         let nameVi = "",
-            nameEn = "";
+            nameEn = "",
+            lableTime ='',
+            lableDate ='';
         if (dataProfile && dataProfile.positionData) {
-            nameVi = `${dataProfile.positionData.valueVi},${dataProfile.lastName} ${dataProfile.firstName}`;
-            nameEn = `${dataProfile.positionData.valueEn},${dataProfile.firstName} ${dataProfile.lastName}`;
+            nameVi = `${dataProfile.positionData.valueVi},${' '}${dataProfile.lastName} ${dataProfile.firstName}`;
+            nameEn = `${dataProfile.positionData.valueEn},${' '}${dataProfile.firstName} ${dataProfile.lastName}`;
+        }
+        if(dataTime){
+            lableTime = language === LANGUAGES.VI ? dataTime.timeTypeData.valueVi: dataTime.timeTypeData.valueEn
+            lableDate= language === LANGUAGES.VI
+                ? unix(new Date(+dataTime.date/1000)).format('dddd - DD/MM/YYYY')
+
+                : unix(new Date(+dataTime.date/1000)).locale('en').format('ddd - DD/MM/YYYY');
+
         }
             return (
                 <div className="profile-doctor-container">
@@ -61,9 +75,14 @@ class ProfileDoctor extends Component {
                                 {language === LANGUAGES.VI ? nameVi : nameEn}
                             </div>
                             <div className="down">
-                                {dataProfile && dataProfile.Markdown &&  dataProfile.Markdown.description && (
-                                    <span>{dataProfile.Markdown.description}</span>
-                                )}
+                                    {dataProfile &&
+                                    dataProfile.Markdown &&
+                                    dataProfile.Markdown.description &&
+                                    isShowDescription === true && (
+                                        <span>{dataProfile.Markdown.description}</span>
+                                    )}
+                                    <div>{lableTime} {this.capitalizeFirstLetter(lableDate)}</div>
+                                    <div>Miễn phí đặt lịch</div>
                             </div>
                         </div>
                     </div>

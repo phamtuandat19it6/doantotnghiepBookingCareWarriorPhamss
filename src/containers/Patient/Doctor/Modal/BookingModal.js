@@ -10,6 +10,7 @@ class BookingModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isShowDescription:false
         };
   }
 async componentDidMount() {
@@ -30,6 +31,7 @@ showHideDetailPrice= (status)=>{
 
   render() {
     let {language,showModal,handleClick,dataTime} = this.props
+    let {isShowDescription} = this.state
     let doctorId = ''
     if(dataTime && !_.isEmpty(dataTime)){
         doctorId = dataTime.doctorId
@@ -51,6 +53,8 @@ showHideDetailPrice= (status)=>{
                         <div className="doctor-infor">
                             <ProfileDoctor
                             doctorId={doctorId}
+                            isShowDescription={isShowDescription}
+                            dataTime={dataTime}
                             />
                         </div>
                         <div className="row">
