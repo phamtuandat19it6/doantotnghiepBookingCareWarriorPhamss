@@ -82,7 +82,7 @@ class ProfileDoctor extends Component {
                                         <span>{dataProfile.Markdown.description}</span>
                                     )}
                                     <div>{lableTime} {this.capitalizeFirstLetter(lableDate)}</div>
-                                    <div>Miễn phí đặt lịch</div>
+                                    <div> <FormattedMessage id ="patient.booking-modal.priceBooking"/></div>
                             </div>
                         </div>
                     </div>

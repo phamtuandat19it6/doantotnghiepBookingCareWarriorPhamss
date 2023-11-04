@@ -270,11 +270,11 @@ class ManageDoctor extends Component {
                         <div className="col-4 form-group">
                             <label htmlFor=""><FormattedMessage id = "admin.manage-doctor.payment"/></label>
                             <Select
-                            placeholder  = {<FormattedMessage id = "admin.manage-doctor.payment"/>}
-                            value={this.state.selectPayment}
-                            onChange={this.handleChangeSelectDoctorInfor}
-                            options={this.state.listPayment}
-                            name="selectPayment"
+                                placeholder  = {<FormattedMessage id = "admin.manage-doctor.payment"/>}
+                                value={this.state.selectPayment}
+                                onChange={this.handleChangeSelectDoctorInfor}
+                                options={this.state.listPayment}
+                                name="selectPayment"
                             />
                         </div>
                         <div className="col-4 form-group">
@@ -345,6 +345,7 @@ const mapStateToProps = state => {
         language: state.app.language,
         allDoctors:state.admin.allDoctors,
         allRequiredData: state.admin.allRequiredData,
+
     };
 };
 const mapDispatchToProps = dispatch => {

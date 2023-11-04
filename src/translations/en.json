@@ -81,6 +81,20 @@
       "payment":"The patient can pay the cost in the from of: ",
       "hide-price":"Hide price list"
 
+    },
+    "booking-modal":{
+      "title":"Information to book a medical appoitment",
+      "fullName":"FullName",
+      "phoneNumber":"Phone number",
+      "email":"Email",
+      "address":"Address",
+      "reason":"Reason for medical examination",
+      "birthday":"Date of birth",
+      "gender":"Genders",
+      "btnCofirm":"Confirm",
+      "btnCancel":"Cancel",
+      "priceBooking":"Free Booking",
+      "price":"Price Exam: "
     }
   },
   "admin":{

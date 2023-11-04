@@ -92,9 +92,9 @@ handleOnchangeSelect = async(event)=>{
 }
 handleClick = (time) => {
     if (!this.state.showModal) {
-      document.addEventListener ("click", this.handleOutsideClick, false);
+      document.addEventListener ("click", this.handleOutsideClicks, false);
     } else {
-      document.removeEventListener ("click", this.handleOutsideClick, false);
+      document.removeEventListener ("click", this.handleOutsideClicks, false);
     }
     this.setState (prevState => ({
       showModal: !prevState.showModal,
