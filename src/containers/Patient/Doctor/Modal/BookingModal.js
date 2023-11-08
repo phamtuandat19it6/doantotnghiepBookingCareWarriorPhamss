@@ -27,6 +27,7 @@ class BookingModal extends Component {
             date:'',
             genders:'',
             selectedGender:'',
+            birthday:'',
             doctorId:'',
             timeType:''
         };
@@ -91,12 +92,12 @@ class BookingModal extends Component {
         this.setState({
             ...copyState
         })
-        console.log('valueIput:',valueInput)
-        console.log('state:',this.state)
+
     }
     handleOnchangeDatePicker = (date) =>{
         this.setState({
-            birthday: date[0]
+            birthday: date[0],
+            date:new Date(this.state.birthday).getTime()
         })
     }
     handleChangeSelect=(selectedGender)=>{
@@ -106,6 +107,8 @@ class BookingModal extends Component {
     }
     handleConfirmBooking = async () =>{
         let date = new Date(this.state.birthday).getTime();
+        let timeString = this.buildTimeBooking(this.props.dataTime);
+        let doctorName = this.buildDoctorName(this.props.dataTime);
         let res = await postPatientInfor({
             fullName:this.state.fullName,
             phoneNumber:this.state.phoneNumber,
@@ -116,6 +119,9 @@ class BookingModal extends Component {
             selectedGender:this.state.selectedGender.value,
             doctorId:this.state.doctorId,
             timeType: this.state.timeType,
+            language:this.props.language,
+            timeString:timeString,
+            doctorName:doctorName
 
         })
         if(res && res.errCode===0){
@@ -125,7 +131,30 @@ class BookingModal extends Component {
             toast.error('Booking a new appointment error')
         }
     }
+    buildTimeBooking =(dataTime)=>{
+        let {language} = this.props;
+        if(dataTime && !_.isEmpty(dataTime)){
+            let time = language === LANGUAGES.VI ?
+            dataTime.timeTypeData.valueVi: dataTime.timeTypeData.valueEn;
 
+            let date = language ===LANGUAGES.VI ?
+            unix(+dataTime.date / 1000).format('dddd - DD/MM/YYYY')
+            : unix(+dataTime.date / 1000).locale('en').format('ddd - MM/DD/YYYY')
+            return `${time} - ${date}`
+
+        }
+        return ''
+    }
+    buildDoctorName = (dataTime) =>{
+        let { language } = this.props;
+        if(dataTime && !_.isEmpty(dataTime)){
+            let name = language === LANGUAGES.VI
+            ? `${dataTime.doctorData.lastName} ${dataTime.doctorData.firstName}`
+            : `${dataTime.doctorData.firstName} ${dataTime.doctorData.lastName}`
+            return name
+        }
+        return ''
+    }
   render() {
     let {showModal,handleClick,dataTime} = this.props
     let {isShowDescription} = this.state
@@ -134,6 +163,7 @@ class BookingModal extends Component {
         doctorId = dataTime.doctorId
     }
     let {fullName,phoneNumber,email,address,reason,birthday,} = this.state
+    console.log('dataTime:',dataTime)
     return (
             <Modal
                 isOpen={showModal}
