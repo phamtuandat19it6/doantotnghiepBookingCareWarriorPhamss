@@ -22,8 +22,14 @@ import HomePage from './HomePage/HomePage.js'
 import CustomScrollbars from "../../src/components/CustomScrollbars.js"
 import DetailDoctor from './Patient/Doctor/DetailDoctor';
 import Doctor from '../routes/Doctor';
+import EmailVerify from './Patient/EmailVerify';
 class App extends Component {
-
+    constructor(props) {
+        super(props);
+            this.state = {
+                verify:false
+            };
+        }
     handlePersistorState = () => {
         const { persistor } = this.props;
         let { bootstrapped } = persistor.getState();
@@ -41,8 +47,14 @@ class App extends Component {
     componentDidMount() {
         this.handlePersistorState();
     }
+    componentDidUpdate = (prevProps, prevState, snapshot) => {
 
+    };
+    onRouteChange (pageId) {
+        console.log('pageId:',pageId);
+    }
     render() {
+        let {verify} = this.state
         return (
             <Fragment>
                 <Router history={history}>
@@ -57,6 +69,8 @@ class App extends Component {
                                 <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
                                 <Route path={path.HOMEPAGE} component= {HomePage} />
                                 <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
+                                <Route path={path.VERIFY_EMAIL_BOOKING} component={EmailVerify}  />
+
                             </Switch>
                         </CustomScrollbars>
                         </div>

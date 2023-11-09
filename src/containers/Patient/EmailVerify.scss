@@ -1,0 +1,47 @@
+.container {
+    transform: translateY(100px) !important;
+
+    .verify-annouce {
+        transform       : translateY(100px) !important;
+        display         : flex;
+        justify-content : center;
+        flex-direction  : column;
+        align-items     : center;
+        width           : 600px;
+        height          : 300px;
+        background-color: #b5d6eb;
+        margin          : 0 auto;
+        border-radius   : 3px;
+        box-shadow      : 0px 1px 2px rgba(0, 0, 0, 0.1);
+
+        .Verify-icon {
+            display         : flex;
+            justify-content : center;
+            align-items     : center;
+            height          : 80px;
+            width           : 80px;
+            background-color: #c8deec;
+            border-radius   : 50%;
+
+            i {
+                color    : #0071ba;
+                font-size: 30px;
+            }
+        }
+
+        .verify-title {
+            color      : #333;
+            margin     : 10px 0;
+            font-weight: 600;
+
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .verify-text {
+            color      : #666;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            opacity    : 0.8;
+            font-weight: 600;
+        }
+    }
+}

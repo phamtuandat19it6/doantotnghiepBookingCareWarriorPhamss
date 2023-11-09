@@ -49,6 +49,9 @@ const getProfileDoctorById = (doctorId) => {
 const postPatientInfor = (data) => {
     return axios.post(`/api/save-patients-infor`,data)
 }
+const postVerifyBookingAppointment = (data) => {
+    return axios.post(`/api/verify-patients-booking-infor`,data)
+}
 export {
     handleLoginApi,
     getAllUsers,
@@ -64,5 +67,6 @@ export {
     getScheduleDoctorByDate,
     getExtraDoctorById,
     getProfileDoctorById,
-    postPatientInfor
+    postPatientInfor,
+    postVerifyBookingAppointment
 }
