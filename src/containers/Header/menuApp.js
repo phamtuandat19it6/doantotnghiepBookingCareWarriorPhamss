@@ -4,22 +4,14 @@ export const adminMenu = [
          menus: [
             {
                 name: 'menu.admin.manage-doctor', link: '/system/manage-doctor',
-                // subMenus: [
-                //     { name: 'menu.system.system-administrator.user-manage', link: '/system/user-manage' },
-                //     { name: 'menu.system.system-administrator.user-redux', link: '/system/user-redux' },
-                //     { name: 'menu.system.system-administrator.register-package-group-or-account', link: '/system/register-package-group-or-account' },
-                // ]
             },
-            // { name: 'menu.system.system-parameter.header', link: '/system/system-parameter' },
+
             {
                 name: 'menu.admin.crud', link: '/system/user-manage',
             },
             {
                 name: 'menu.admin.crud-redux', link: '/system/user-redux',
             },
-            // {
-            //     name: 'menu.admin.manage-admin', link: '/system/user-admin',
-            // },
             { //Quản lí kế hoạch khám bệnh của bác sĩ
                 name: 'menu.doctor.manage-schedule', link: '/doctor/manage-schedule',
             },
@@ -30,9 +22,7 @@ export const adminMenu = [
          menus: [
             {
                 name: 'menu.admin.manage-clinic', link: '/system/manage-clinic',
-
             },
-
         ]
     },
     { //Quản lí chuyên khoa
@@ -40,9 +30,7 @@ export const adminMenu = [
          menus: [
             {
                 name: 'menu.admin.manage-specialty', link: '/system/manage-specialty',
-
             },
-
         ]
     },
     { //Quản lí cẩm nang
@@ -50,9 +38,7 @@ export const adminMenu = [
          menus: [
             {
                 name: 'menu.admin.manage-handbook', link: '/system/manage-handbook',
-
             },
-
         ]
     },
 ];

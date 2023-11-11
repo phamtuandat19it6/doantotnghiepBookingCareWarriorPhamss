@@ -77,10 +77,8 @@ async componentDidUpdate (prevProps, prevState, snapshot) {
                         }
                     </div>
                     }
-
                 </div>
-        </>
-
+            </>
         )
     }
 }
