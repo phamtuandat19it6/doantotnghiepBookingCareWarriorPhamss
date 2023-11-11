@@ -3,54 +3,59 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { LANGUAGES } from "../../../utils/constant"
-
+import {getAllSpecialty} from '../../../services/userSevice'
 import Slider from 'react-slick';
 
 
 class Specialty extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            dataSpecialty:[]
+        }
+    }
+    async componentDidMount(){
+        let res = await getAllSpecialty()
+        if(res && res.errCode === 0){
+            console.log('check res:',res)
+            this.setState({
+                dataSpecialty:res.data ? res.data : []
+            })
+        }
+    }
     changLanguage =(language) =>{
         this.props.changeLanguageAppRedux(language)
     }
     render() {
-
+    let {dataSpecialty} = this.state
 
         return (
             <div className='section-share section-specialty'>
                 <div className='section-container'>
                     <div className='section-header'>
-                        <span className='title-section'>Chuyên khoa phổ biến</span>
-                        <button className='btn-section'>xem thêm</button>
+                        <span className='title-section'>
+                            <FormattedMessage id="homepage.specialty"/>
+                        </span>
+                        <button className='btn-section'>
+                            <FormattedMessage id="homepage.more-info"/>
+                        </button>
                     </div>
                     <div className="section-body">
                     <Slider {...this.props.settings}>
-                        <div className='section-customize'>
-                           <div className="bg-image section-specialty"></div>
-                            <div className='text-content'>Cơ xương khớp</div>
-                        </div>
-                        <div className='section-customize'>
-                           <div className="bg-image section-specialty"></div>
-                            <div className='text-content'>Cơ xương khớp</div>
-                        </div>
-                        <div className='section-customize'>
-                           <div className="bg-image section-specialty"></div>
-                            <div className='text-content'>Cơ xương khớp</div>
-                        </div>
-                        <div className='section-customize'>
-                           <div className="bg-image section-specialty"></div>
-                            <div className='text-content'>Cơ xương khớp</div>
-                        </div>
-                        <div className='section-customize'>
-                            <div className="bg-image section-specialty"></div>
-                            <div className='text-content'>Cơ xương khớp</div>
-                        </div>
-                        <div className='section-customize'>
-                           <div className="bg-image section-specialty"></div>
-                            <div className='text-content'>Cơ xương khớp</div>
-                        </div>
-                        <div className='section-customize'>
-                           <div className="bg-image section-specialty"></div>
-                            <div className='text-content'>Cơ xương khớp</div>
-                        </div>
+                        {dataSpecialty && dataSpecialty.length > 0 &&
+                        dataSpecialty.map((item,index)=>{
+
+                            return (
+                                <div className='section-customize' key={index}>
+                                <div className="bg-image section-specialty"
+                                    style={{backgroundImage:`url(${item.image})`}}
+                                ></div>
+                                    <div className='text-content'>{item.name}</div>
+                                </div>
+
+                            )
+                        })
+                        }
                     </Slider>
                     </div>
                 </div>
