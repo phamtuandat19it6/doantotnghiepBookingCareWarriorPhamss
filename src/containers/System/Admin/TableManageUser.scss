@@ -113,19 +113,20 @@
     }
 
     .more-infor {
-        margin         : 0 auto !important;
-        justify-content: center !important;
+        margin: 0 auto !important;
+
     }
 
     .more-infor-extra {
-        justify-content: center;
-        margin         : 0 auto !important;
+        margin: 0 auto !important;
+
     }
 
     .manage-doctor-editor {
         display        : flex;
         justify-content: center;
-        padding        : 0 10px;
+        padding        : 0 30px;
+        margin-top     : 20px;
     }
 
     .rc-md-editor {

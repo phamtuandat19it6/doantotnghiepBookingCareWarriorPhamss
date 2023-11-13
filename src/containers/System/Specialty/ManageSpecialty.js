@@ -85,7 +85,7 @@ handleNewSaveSpecialty = async() =>{
                         />
                     </div>
                     <div className="col-12 form-group">
-                        <MdEditor style={{ height: '300px' }}
+                        <MdEditor style={{ height: '350px' }}
                             renderHTML={text => mdParser.render(text)}
                             onChange={this.handleEditorChange}
                             className='col-12'
