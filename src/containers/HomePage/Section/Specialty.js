@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { LANGUAGES } from "../../../utils/constant"
 import {getAllSpecialty} from '../../../services/userSevice'
 import Slider from 'react-slick';
+import { withRouter } from 'react-router';
 
 
 class Specialty extends Component {
@@ -21,6 +22,11 @@ class Specialty extends Component {
             this.setState({
                 dataSpecialty:res.data ? res.data : []
             })
+        }
+    }
+    handleViewDetailSpecialty =(specialty)=>{
+        if(this.props.history){
+            this.props.history.push(`/detail-specialty/${specialty.id}`)
         }
     }
     changLanguage =(language) =>{
@@ -44,15 +50,14 @@ class Specialty extends Component {
                     <Slider {...this.props.settings}>
                         {dataSpecialty && dataSpecialty.length > 0 &&
                         dataSpecialty.map((item,index)=>{
-
                             return (
-                                <div className='section-customize' key={index}>
-                                <div className="bg-image section-specialty"
-                                    style={{backgroundImage:`url(${item.image})`}}
-                                ></div>
+                                <div className='section-customize' key={index} onClick={()=> this.handleViewDetailSpecialty(item)}>
+                                    <div className="bg-image section-specialty"
+                                        style={{backgroundImage:`url(${item.image})`}}
+                                    >
+                                    </div>
                                     <div className='text-content'>{item.name}</div>
                                 </div>
-
                             )
                         })
                         }
@@ -76,4 +81,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Specialty);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Specialty));
