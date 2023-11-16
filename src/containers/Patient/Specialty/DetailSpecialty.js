@@ -8,29 +8,30 @@ import Header from "../../Header/Header";
 import DoctorSchedule from '../Doctor/DoctorSchedule';
 import DoctorInforExtra from "../Doctor/DoctorInforExtra";
 import ProfileDoctor from "../Doctor/ProfileDoctor";
-import {getDetailSpecialtyById,getAllCodeService} from '../../../services/userSevice'
+import {getDetailSpecialtyById,getAllCodeService,} from '../../../services/userSevice'
 import _ from "lodash";
 class DetailSpecialty extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          isShowDetail:false,
           arrDoctorId:[],
           dataDetailSpecialty:{},
-          listProvince:[]
+          listProvince:[],
+          dataSpecialty:[]
         };
   }
 async componentDidMount() {
     if (this.props.match && this.props.match.params && this.props.match.params.id )
     {
         let id = this.props.match.params.id;
-
         let res = await getDetailSpecialtyById({
             id:id,
             location:'ALL'
         });
         let resProvince = await getAllCodeService('PROVINCE')
 
-        if (res && res.errCode === 0 && resProvince && resProvince.errCode ===0) {
+        if (res && res.errCode === 0 && resProvince && resProvince.errCode === 0) {
             let data = res.data
             let arrDoctorId = []
             if(data && !_.isEmpty(data)){
@@ -44,7 +45,7 @@ async componentDidMount() {
             this.setState({
                 dataDetailSpecialty: res.data,
                 arrDoctorId:arrDoctorId,
-                listProvince:resProvince.data
+                listProvince:resProvince.data,
             });
         }
     }
@@ -62,26 +63,40 @@ showHideDetailPrice= (status)=>{
 handleOnchangeSelect =(event)=>{
     console.log('check value:',event.target.value)
 }
-
+showHideDetailPrice= ()=>{
+    this.setState({
+        isShowDetail:!this.state.isShowDetail
+    })
+}
   render() {
     let {language} = this.props
-    let {arrDoctorId,dataDetailSpecialty,listProvince} = this.state
+    let {arrDoctorId,dataDetailSpecialty,listProvince,isShowDetail} = this.state
     console.log('check response:',this.state)
         return (
             <>
             <div className="detail-specialty-container">
                 <Header/>
                 <HomeHeader/>
-                <div className="detail-specialty-body">
-                    <div className="description-specialty">
+                <div className={isShowDetail===false ? 'description-specialty small ':'description-specialty large'}
+                    style={{backgroundImage: `url(${ dataDetailSpecialty && dataDetailSpecialty.image ? dataDetailSpecialty.image : ""  })`}}
+                >
+                    <div className= {isShowDetail===false ? "descriptionHTML small  ":'descriptionHTML large'}>
                         {dataDetailSpecialty && !_.isEmpty(dataDetailSpecialty)
                             &&
                             <div  dangerouslySetInnerHTML={{ __html: dataDetailSpecialty.descriptionHTML}} >
                             </div>
                         }
                     </div>
-                    <div className="select-doctor-province">
-                        <select className="form-control col-1 "
+                </div>
+                <div className="doc-them">
+                    <span className="see-more" onClick={()=>this.showHideDetailPrice()} >
+                            Đọc thêm
+                    </span>
+                </div>
+                <div className="detail-specialty-body mt-2">
+
+                    <div className="select-doctor-province ">
+                        <select className="form-control col-1  "
                                 onChange={(event)=>this.handleOnchangeSelect(event)}
                         >
                             <option value="ALL">Toàn quốc</option>
