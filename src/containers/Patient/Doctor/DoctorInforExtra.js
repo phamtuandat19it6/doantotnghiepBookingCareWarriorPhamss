@@ -43,7 +43,8 @@ showHideDetailPrice= (status)=>{
     })
 }
   render() {
-    let {language} = this.props
+    let {language,} = this.props
+
     let {isShowDetail,extraInfor} = this.state
 
 

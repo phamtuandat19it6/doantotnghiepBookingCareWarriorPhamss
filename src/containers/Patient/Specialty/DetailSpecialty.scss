@@ -40,6 +40,9 @@
     .detail-specialty-body {
         margin: 0 100px;
 
+        .select-doctor-province {
+            cursor: pointer;
+        }
     }
 
     .each-doctor {
@@ -59,8 +62,9 @@
         }
 
         .dt-content-right {
-            width  : 50%;
-            padding: 5px;
+            width       : 50%;
+            padding     : 5px;
+            padding-left: 8px;
 
             .doctor-schedule {
                 .doctor-schedule-container {

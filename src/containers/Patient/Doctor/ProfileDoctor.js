@@ -7,6 +7,7 @@ import {getProfileDoctorById} from '../../../services/userSevice';
 import { NumericFormat } from 'react-number-format';
 import moment, { unix } from 'moment';
 import lacalization from 'moment/locale/vi';
+import {Link} from 'react-router-dom'
 class ProfileDoctor extends Component {
     constructor(props) {
         super(props);
@@ -42,7 +43,7 @@ class ProfileDoctor extends Component {
     }
 
     render() {
-        let {language,isShowDescription,dataTime} = this.props
+        let {language,isShowDescription,dataTime,isShowLinkDetail,isShowPrice,doctorId} = this.props
         let {dataProfile} = this.state
         let nameVi = "",
             nameEn = "",
@@ -86,6 +87,11 @@ class ProfileDoctor extends Component {
                             </div>
                         </div>
                     </div>
+                    {isShowLinkDetail===true &&
+                     <div className="see-more" >
+                        <Link className="see-more" to = {`/detail-doctor/${doctorId}`}>Xem thêm</Link>
+                    </div>}
+                    {isShowPrice === true  &&
                     <div className="pice">
                         <span className="text-price">
                             <FormattedMessage id ="patient.extra-infor-doctor.text-price"/>
@@ -103,6 +109,7 @@ class ProfileDoctor extends Component {
                         </span>
                     }
                     </div>
+                    }
                 </div>
             )
         }

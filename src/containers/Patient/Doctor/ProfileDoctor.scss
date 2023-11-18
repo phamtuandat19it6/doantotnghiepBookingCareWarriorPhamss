@@ -1,4 +1,11 @@
 .profile-doctor-container {
+    .see-more {
+        cursor         : pointer;
+        color          : #45c3d2;
+        // margin-left: 19%;
+        text-decoration: none;
+    }
+
     .intro-doctor {
         display: flex;
 
@@ -29,7 +36,8 @@
             }
 
             .down {
-                padding-top: 10px;
+                padding-top  : 10px;
+                padding-right: 8px;
             }
         }
     }
@@ -42,11 +50,11 @@
         color         : #45c3d2;
 
         .text-price {
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .booking-price {
-            font-size: 14px;
+            font-size: 13px;
         }
     }
 }

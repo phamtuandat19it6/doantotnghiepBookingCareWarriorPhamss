@@ -42,10 +42,20 @@ async componentDidMount() {
                     })
                 }
             }
+            let dataProvince = resProvince.data
+            if(dataProvince && dataProvince.length > 0){
+                dataProvince.unshift({
+                    createdAt:null,
+                    keyMap:"ALL",
+                    type:"PROVINCE",
+                    valueEn:"ALL",
+                    valueVi:"Toàn Quốc",
+                })
+            }
             this.setState({
                 dataDetailSpecialty: res.data,
                 arrDoctorId:arrDoctorId,
-                listProvince:resProvince.data,
+                listProvince:dataProvince ? dataProvince : []
             });
         }
     }
@@ -60,8 +70,44 @@ showHideDetailPrice= (status)=>{
         isShowDetail:status
     })
 }
-handleOnchangeSelect =(event)=>{
-    console.log('check value:',event.target.value)
+handleOnchangeSelect = async(event)=>{
+    if (this.props.match && this.props.match.params && this.props.match.params.id )
+    {
+        let id = this.props.match.params.id;
+        let location = event.target.value
+        let res = await getDetailSpecialtyById({
+            id:id,
+            location:location
+        });
+        let resProvince = await getAllCodeService('PROVINCE')
+
+        if (res && res.errCode === 0 ) {
+            let data = res.data
+            let arrDoctorId = []
+            if(data && !_.isEmpty(data)){
+                let arr = data.doctorSpecialty
+                if(arr && arr.length > 0){
+                    arr.map((item) => {
+                        arrDoctorId.push(item.doctorId)
+                    })
+                }
+            }
+            let dataProvince = resProvince.data
+            if(dataProvince && dataProvince.length > 0){
+                dataProvince.unshift({
+                    createdAt:null,
+                    keyMap:"ALL",
+                    type:"PROVINCE",
+                    valueEn:"ALL",
+                    valueVi:"Toàn Quốc",
+                })
+            }
+            this.setState({
+                dataDetailSpecialty: res.data,
+                arrDoctorId:arrDoctorId,
+            });
+        }
+    }
 }
 showHideDetailPrice= ()=>{
     this.setState({
@@ -90,21 +136,20 @@ showHideDetailPrice= ()=>{
                 </div>
                 <div className="doc-them">
                     <span className="see-more" onClick={()=>this.showHideDetailPrice()} >
-                            Đọc thêm
+                          {isShowDetail===false ?"Đọc thêm":"Ẩn Bớt"}
                     </span>
                 </div>
                 <div className="detail-specialty-body mt-2">
 
                     <div className="select-doctor-province ">
-                        <select className="form-control col-1  "
+                        <select className="form-control col-1 select-doctor-province  "
                                 onChange={(event)=>this.handleOnchangeSelect(event)}
                         >
-                            <option value="ALL">Toàn quốc</option>
                             {listProvince && listProvince.length > 0
                             &&
                             listProvince.map((item,index)=>{
                                 return(
-                                    <option key={index} value={item.keyMap}>
+                                    <option className="select-doctor-province" key={index} value={item.keyMap}>
                                         {language === LANGUAGES.VI ? item.valueVi: item.valueEn}
                                     </option>
                                 )
@@ -121,6 +166,8 @@ showHideDetailPrice= ()=>{
                                     <ProfileDoctor
                                         doctorId={item}
                                         isShowDescription={true}
+                                        isShowLinkDetail = {true}
+                                        isShowPrice = {false}
                                         // dataTime={dataTime}
                                     />
                                 </div>
