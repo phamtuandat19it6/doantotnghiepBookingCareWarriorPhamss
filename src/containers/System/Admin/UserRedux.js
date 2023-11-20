@@ -338,14 +338,23 @@ class UserRedux extends Component {
                                         </select>
                                     </div>
                                     <div className="form-group col-md-3">
-                                        <label htmlFor="inputAddress2"><FormattedMessage id="manage-user.image"/></label>
+                                        <label htmlFor="inputAddress2">
+                                            <FormattedMessage id="manage-user.image"/>
+                                        </label>
                                         <div className='preview-img-container form-control'>
-                                            <input id='previewImg' type="file" hidden onChange={(event)=> this.handleOnchangeImage(event)}/>
-                                            <label className='label-upload' htmlFor="previewImg">Tải ảnh <i className="fas fa-upload px-1"></i></label>
+                                            <input id='previewImg'
+                                                    type="file"
+                                                    hidden
+                                                    onChange={(event)=> this.handleOnchangeImage(event)}
+                                            />
+                                            <label className='label-upload' htmlFor="previewImg">
+                                                Tải ảnh <i className="fas fa-upload px-1"></i>
+                                            </label>
                                             <div className='preview-image'
                                                 style={{backgroundImage:`url(${this.state.previewImgUrl})`}}
                                                 onClick={() => this.openPreviewImage()}
-                                            ></div>
+                                            >
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

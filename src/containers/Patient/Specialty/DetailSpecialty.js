@@ -143,7 +143,7 @@ showHideDetailPrice= ()=>{
 
                     <div className="select-doctor-province ">
                         <select className="form-control col-1 select-doctor-province  "
-                                onChange={(event)=>this.handleOnchangeSelect(event)}
+                            onChange={(event)=>this.handleOnchangeSelect(event)}
                         >
                             {listProvince && listProvince.length > 0
                             &&

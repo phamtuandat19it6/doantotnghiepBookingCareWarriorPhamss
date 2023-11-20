@@ -1,5 +1,5 @@
 import actionTypes from './actionTypes';
-import { getAllCodeService,createNewUserService,getAllUsers,deleteUserService,editUserService,getTopDoctorHomeService,getAllDoctorService,saveInforDoctorService,getAllSpecialty  } from '../../services/userSevice';
+import { getAllCodeService,createNewUserService,getAllUsers,deleteUserService,editUserService,getTopDoctorHomeService,getAllDoctorService,saveInforDoctorService,getAllSpecialty,getAllclinic,createNewClinic,deleteClinicService  } from '../../services/userSevice';
 import {toast} from "react-toastify"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -167,12 +167,38 @@ export const deleteAUser = (userId) => {
         }
     }
 }
-
 export const deleteUserSuccess = () => ({
     type:actionTypes.DELETE_USER_SUCCESS
 })
 export const deleteUserFailed = () => ({
     type:actionTypes.DELETE_USER_FAILED
+})
+
+export const deleteClinic = (clinicId) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await deleteClinicService(clinicId);
+            if(res && res.errCode === 0){
+                toast.success('🦄 Delete Clinic succeed!');
+                dispatch(deleteClinicSuccess());
+                dispatch(fetchAllRequiredDoctorInfor());
+            }else{
+                dispatch(deleteClinicFailed());
+            }
+
+        } catch (error) {
+            dispatch(deleteClinicFailed());
+            toast.error('🦄 Delete clinic error!');
+        }
+    }
+}
+
+
+export const deleteClinicSuccess = () => ({
+    type:actionTypes.DELETE_CLINIC_SUCCESS
+})
+export const deleteClinicFailed = () => ({
+    type:actionTypes.DELETE_CLINIC_FAILED
 })
 
 export const editAUser = (data) => {
@@ -253,6 +279,29 @@ export const fetchAllDoctors = () => {
     }
 }
 
+export const saveInforClinic = (inputData) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await createNewClinic(inputData);
+            if(res && res.errCode === 0){
+                toast.success('🦄 Save infor the clinic succeed!');
+                dispatch({
+                    type: actionTypes.FETCH_SAVE_INFOR_CLINICS_SUCCESS,
+                })
+            }else{
+                toast.error(res.errMessage);
+                dispatch({
+                    type: actionTypes.FETCH_SAVE_INFOR_CLINICS_FAILED,
+                })
+            }
+        } catch (error) {
+            dispatch({
+                type: actionTypes.FETCH_SAVE_INFOR_CLINICS_FAILED,
+            })
+            toast.error('🦄 Save infor clinic error!');
+        }
+    }
+}
 export const saveInforDortor = (inputData) => {
     return async (dispatch, getState) => {
         try {
@@ -263,24 +312,19 @@ export const saveInforDortor = (inputData) => {
                     type: actionTypes.FETCH_SAVE_INFOR_DOCTORS_SUCCESS,
                 })
             }else{
-                console.log('err res',res)
                 toast.error(res.errMessage);
                 dispatch({
                     type: actionTypes.FETCH_SAVE_INFOR_DOCTORS_FAILED,
                 })
             }
-
-
         } catch (error) {
             dispatch({
                 type: actionTypes.FETCH_SAVE_INFOR_DOCTORS_FAILED,
             })
             toast.error('🦄 Save infor doctor error!');
-            console.log('save dơ:', error)
         }
     }
 }
-
 export const fetchAllScheduleTime = () => {
     return async (dispatch, getState) => {
         try {
@@ -312,15 +356,18 @@ export const fetchAllRequiredDoctorInfor =  () => {
             let resPayment = await getAllCodeService('PAYMENT')
             let resProvince = await getAllCodeService('PROVINCE')
             let resSpecialty = await getAllSpecialty()
+            let resClinic = await getAllclinic()
             if(resPrice && resPrice.errCode === 0
                 && resPayment && resPayment.errCode === 0
                 && resProvince && resProvince.errCode === 0
-                && resSpecialty && resSpecialty.errCode === 0){
+                && resSpecialty && resSpecialty.errCode === 0
+                && resClinic && resClinic.errCode ===0){
                     let data = {
                         resPrice:resPrice.data,
                         resPayment:resPayment.data,
                         resProvince:resProvince.data,
                         resSpecialty:resSpecialty.data,
+                        resClinic:resClinic.data
                     }
                 dispatch(fetchAllRequiredDoctorInforSuccess(data));
 
