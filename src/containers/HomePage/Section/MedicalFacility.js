@@ -19,7 +19,7 @@ class MeedicalFacility extends Component {
             })
         }
     }
-    handleViewDetailSpecialty =(clinic)=>{
+    handleViewDetailClinic =(clinic)=>{
         if(this.props.history){
             this.props.history.push(`/detail-clinic/${clinic.id}`)
         }
@@ -43,7 +43,7 @@ class MeedicalFacility extends Component {
                         dataClinic.map((item,index)=>{
                             return(
                                 <div className='section-customizes section-medical-facility' key={index}
-                                onClick={()=> this.handleViewDetailSpecialty(item)}>
+                                onClick={()=> this.handleViewDetailClinic(item)}>
                                     <div className="bg-images section-medical-facility"
                                     style={{backgroundImage:`url(${item.image})`
 
