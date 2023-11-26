@@ -70,12 +70,16 @@ const getAllclinic = () => {
 const getDetailClinicById = (data) => {
     return axios.get(`/api/get-detail-clinic-by-id?id=${data.id}`)
 }
+
 const deleteClinicService = (ClinicId) => {
     return axios.delete('/api/delete-clinic', {
         data: {
             id: ClinicId
         }
     })
+}
+const getAllPatientForDoctor = (data)=>{
+    return axios.get(`/api/get-list-patient-for-doctor?doctorId=${data.doctorId}&date=${data.date}`)
 }
 export {
     handleLoginApi,
@@ -100,6 +104,7 @@ export {
     createNewClinic,
     getAllclinic,
     getDetailClinicById,
-    deleteClinicService
+    deleteClinicService,
+    getAllPatientForDoctor
     // saveInforClinic
 }
