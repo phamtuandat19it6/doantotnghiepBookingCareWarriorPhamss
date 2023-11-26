@@ -180,7 +180,7 @@ class ManageSchedule extends Component {
                         </div>
                         <div className="col-12">
                             <button
-                            className='btn btn-primary btn-save-schedule px-3 '
+                            className='btn btn-primary btn-save-schedule ml-3 px-3 '
                             onClick={()=> this.handleSaveSchedule()}
                             >
                                 <FormattedMessage id = "manage-schedule.save"/>
