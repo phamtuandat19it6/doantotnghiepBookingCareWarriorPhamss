@@ -7,30 +7,31 @@ import Header from "../../Header/Header";
 import { LANGUAGES } from "../../../utils";
 import DoctorSchedule from './DoctorSchedule';
 import DoctorInforExtra from "./DoctorInforExtra";
+import LikeAndShare from '../SocialPlugin/LikeAndShare'
+import Comment from '../SocialPlugin/Comment'
 class DetailDoctor extends Component {
     constructor(props) {
-    super(props);
+        super(props);
         this.state = {
-        detailDoctor: {},
-        currentDoctorId:-1,
+            detailDoctor: {},
+            currentDoctorId: -1,
         };
     }
     async componentDidMount() {
-        if (this.props.match && this.props.match.params && this.props.match.params.id )
-        {
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id;
             this.setState({
-                currentDoctorId:id
+                currentDoctorId: id
             })
             let res = await getDetailInforDoctor(id);
             if (res && res.errCode === 0) {
                 this.setState({
-                     detailDoctor: res.data,
+                    detailDoctor: res.data,
                 });
             }
         }
     }
-     componentDidUpdate = (prevProps, prevState, snapshot) => {};
+    componentDidUpdate = (prevProps, prevState, snapshot) => { };
     render() {
         let { detailDoctor } = this.state;
         let { language } = this.props;
@@ -40,7 +41,9 @@ class DetailDoctor extends Component {
             nameVi = `${detailDoctor.positionData.valueVi},${' '}${detailDoctor.lastName} ${detailDoctor.firstName}`;
             nameEn = `${detailDoctor.positionData.valueEn},${' '}${detailDoctor.firstName} ${detailDoctor.lastName}`;
         }
-         return (
+        let currentURL = +process.env.REACT_APP_IS_LOCALHOST === 1 ?
+            "https://eric-restaurant-bot-tv.herokuapp.com/" : window.location.href
+        return (
             <>
                 <Header />
                 <HomeHeader isShowBanner={false} />
@@ -49,7 +52,7 @@ class DetailDoctor extends Component {
                         <div
                             className="content-left"
                             style={{
-                            backgroundImage: `url(${ detailDoctor && detailDoctor.image ? detailDoctor.image : ""  })`,
+                                backgroundImage: `url(${detailDoctor && detailDoctor.image ? detailDoctor.image : ""})`,
                             }}
                         >
                         </div>
@@ -59,10 +62,17 @@ class DetailDoctor extends Component {
                             </div>
                             <div className="down">
                                 {detailDoctor &&
-                                detailDoctor.Markdown &&
-                                detailDoctor.Markdown.description && (
-                                    <span>{detailDoctor.Markdown.description}</span>
-                                )}
+                                    detailDoctor.Markdown &&
+                                    detailDoctor.Markdown.description && (
+                                        <span>{detailDoctor.Markdown.description}</span>
+                                    )
+                                }
+                                <div className="like-share-plugin">
+                                    <LikeAndShare
+                                        dataHref={currentURL}
+                                    />
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -80,17 +90,21 @@ class DetailDoctor extends Component {
                     </div>
                     <div className="detail-infor-doctor">
                         {detailDoctor &&
-                        detailDoctor.Markdown &&
-                        detailDoctor.Markdown.contentHTML && (
-                            <div
-                                dangerouslySetInnerHTML={{
-                                __html: detailDoctor.Markdown.contentHTML,
-                                }}
-                            >
-                            </div>
-                        )}
+                            detailDoctor.Markdown &&
+                            detailDoctor.Markdown.contentHTML && (
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: detailDoctor.Markdown.contentHTML,
+                                    }}
+                                >
+                                </div>
+                            )}
                     </div>
-                    <div className="comment-doctor"></div>
+                    <div className="comment-doctor">
+                        <Comment
+                            width={"100%"}
+                        />
+                    </div>
                 </div>
             </>
         );
@@ -98,7 +112,7 @@ class DetailDoctor extends Component {
 }
 
 const mapStateToProps = (state) => {
-     return {
+    return {
         language: state.app.language,
     };
 };
