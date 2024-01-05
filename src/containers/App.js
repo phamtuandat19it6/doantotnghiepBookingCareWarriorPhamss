@@ -25,13 +25,14 @@ import Doctor from '../routes/Doctor';
 import EmailVerify from './Patient/EmailVerify';
 import DetailSpecialty from './Patient/Specialty/DetailSpecialty';
 import DetailClinic from './Patient/Clinic/DetailClinic'
+import DetailHandbook from './Patient/HandBook/DetailHandBook'
 class App extends Component {
     constructor(props) {
         super(props);
-            this.state = {
-                verify:false
-            };
-        }
+        this.state = {
+            verify: false
+        };
+    }
     handlePersistorState = () => {
         const { persistor } = this.props;
         let { bootstrapped } = persistor.getState();
@@ -52,32 +53,33 @@ class App extends Component {
     componentDidUpdate = (prevProps, prevState, snapshot) => {
 
     };
-    onRouteChange (pageId) {
-        console.log('pageId:',pageId);
+    onRouteChange(pageId) {
+        console.log('pageId:', pageId);
     }
     render() {
-        let {verify} = this.state
+        let { verify } = this.state
         return (
             <Fragment>
                 <Router history={history}>
                     <div className="main-container">
 
                         <div className="content-container">
-                        <CustomScrollbars style = {{height:'100vh',width:'100%'}}>
-                            <Switch>
-                                <Route path={path.HOME} exact component={(Home)} />
-                                <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
-                                <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
-                                <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
+                            <CustomScrollbars style={{ height: '100vh', width: '100%' }}>
+                                <Switch>
+                                    <Route path={path.HOME} exact component={(Home)} />
+                                    <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
+                                    <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                    <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
 
-                                <Route path={path.HOMEPAGE} component= {HomePage} />
-                                <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
-                                <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty} />
-                                <Route path={path.DETAIL_CLINIC} component={DetailClinic} />
-                                <Route path={path.VERIFY_EMAIL_BOOKING} component={EmailVerify}  />
+                                    <Route path={path.HOMEPAGE} component={HomePage} />
+                                    <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
+                                    <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty} />
+                                    <Route path={path.DETAIL_CLINIC} component={DetailClinic} />
+                                    <Route path={path.DETAIL_HANDBOOK} component={DetailHandbook} />
+                                    <Route path={path.VERIFY_EMAIL_BOOKING} component={EmailVerify} />
 
-                            </Switch>
-                        </CustomScrollbars>
+                                </Switch>
+                            </CustomScrollbars>
                         </div>
 
                         {/* <ToastContainer

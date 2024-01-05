@@ -1,13 +1,14 @@
 export const path = {
     HOME: '/',
-    HOMEPAGE:'/home',
+    HOMEPAGE: '/home',
     LOGIN: '/login',
     LOG_OUT: '/logout',
     SYSTEM: '/system',
-    DETAIL_DOCTOR:'/detail-doctor/:id',
-    VERIFY_EMAIL_BOOKING:'/verify-booking',
-    DETAIL_SPECIALTY:'/detail-specialty/:id',
-    DETAIL_CLINIC:'/detail-clinic/:id'
+    DETAIL_DOCTOR: '/detail-doctor/:id',
+    VERIFY_EMAIL_BOOKING: '/verify-booking',
+    DETAIL_SPECIALTY: '/detail-specialty/:id',
+    DETAIL_CLINIC: '/detail-clinic/:id',
+    DETAIL_HANDBOOK: '/detail-handbook/:id'
 };
 
 export const LANGUAGES = {
@@ -16,10 +17,10 @@ export const LANGUAGES = {
 };
 
 export const CRUD_ACTIONS = {
-    CREATE:"CREATE",
-    DELETE:"DELETE",
-    READ:"READ",
-    EDIT:"EDIT"
+    CREATE: "CREATE",
+    DELETE: "DELETE",
+    READ: "READ",
+    EDIT: "EDIT"
 }
 
 export const manageActions = {
@@ -38,7 +39,7 @@ export const YesNoObj = {
 }
 
 export const USER_ROLE = {
-    ADMIN:'R1',
-    DOCTOR:'R2',
-    PATIENT:'R3'
+    ADMIN: 'R1',
+    DOCTOR: 'R2',
+    PATIENT: 'R3'
 }

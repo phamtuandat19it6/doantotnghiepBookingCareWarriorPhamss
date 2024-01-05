@@ -1,29 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./ManageClinic.scss";
+import "./ManageHandbook.scss";
 import { CRUD_ACTIONS, LANGUAGES, CommonUtils } from '../../../utils';
 import { FormattedMessage } from 'react-intl';
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
-import { createNewClinic, getDetailClinicById } from '../../../services/userSevice';
+import { createNewHandbook, getDetailHandbookById } from '../../../services/userSevice';
 import { toast } from "react-toastify"
 import * as actions from "../../../store/actions";
 import _ from "lodash";
 const mdParser = new MarkdownIt(/* Markdown-it options */);
-class ManageClinic extends Component {
+class ManageHandbook extends Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
             imageBase64: '',
-            imageBackground: '',
             descriptionHTML: '',
             descriptionMarkdown: '',
-            address: '',
             hasOldData: false,
-            clinicId: '',
-
-            listClinic: [],
+            handbookId: '',
+            listHandbook: [],
         };
     }
     async componentDidMount() {
@@ -33,24 +30,24 @@ class ManageClinic extends Component {
     async componentDidUpdate(prevProps, prevState, snapshot) {
 
         if (prevProps.language !== this.props.language) {
-            let { resClinic } = this.props.allRequiredData
-            let dataSelectClinic = this.buildDataInputSelect(resClinic, 'CLINIC')
+            let { resHandbook } = this.props.allRequiredData
+            let dataSelectHandbook = this.buildDataInputSelect(resHandbook, 'HANDBOOK')
             this.setState({
-                listClinic: dataSelectClinic
+                listHandbook: dataSelectHandbook
             })
         }
         if (prevProps.allRequiredData !== this.props.allRequiredData) {
-            let { resClinic } = this.props.allRequiredData
-            let dataSelectClinic = this.buildDataInputSelect(resClinic, 'CLINIC')
+            let { resHandbook } = this.props.allRequiredData
+            let dataSelectHandbook = this.buildDataInputSelect(resHandbook, 'HANDBOOK')
             this.setState({
-                listClinic: dataSelectClinic
+                listHandbook: dataSelectHandbook
             })
         }
     };
     buildDataInputSelect = (inputData, type) => {
         let result = [];
         if (inputData && inputData.length > 0) {
-            if (type === 'CLINIC') {
+            if (type === 'HANDBOOK') {
                 inputData.map((item, index) => {
                     let object = {};
                     object.label = item.name
@@ -61,11 +58,7 @@ class ManageClinic extends Component {
         }
         return result;
     }
-    showHideDetailPrice = (status) => {
-        this.setState({
-            isShowDetail: status
-        })
-    }
+
     handleOnChangeInput = (event, id) => {
         let copyState = { ...this.state }
         copyState[id] = event.target.value
@@ -91,15 +84,14 @@ class ManageClinic extends Component {
     handleOnchangeSelect = async (event) => {
 
         let id = event.target.value
-        let res = await getDetailClinicById({
+        let res = await getDetailHandbookById({
             id: id,
         });
         if (res && res.errCode === 0) {
             this.setState({
-                clinicId: id,
+                handbookId: id,
                 name: res.data.name,
                 imageBase64: res.data.image,
-                imageBackground: res.data.imageBackground,
                 descriptionHTML: res.data.descriptionHTML,
                 descriptionMarkdown: res.data.descriptionMarkdown,
                 address: res.data.address,
@@ -110,69 +102,53 @@ class ManageClinic extends Component {
             this.setState({
                 name: '',
                 imageBase64: '',
-                imageBackground: '',
                 descriptionHTML: '',
                 descriptionMarkdown: '',
-                address: '',
                 hasOldData: false
             })
         }
     }
 
 
-    handleSaveNewClinic = async () => {
+    handleSaveNewHandbook = async () => {
         let { hasOldData } = this.state;
-        await this.props.saveInforClinic({
+        this.props.saveInforHandbook({
             name: this.state.name,
             imageBase64: this.state.imageBase64,
-            imageBackground: this.state.imageBackground,
             descriptionHTML: this.state.descriptionHTML,
             descriptionMarkdown: this.state.descriptionMarkdown,
-            address: this.state.address,
             action: hasOldData === true ? CRUD_ACTIONS.EDIT : CRUD_ACTIONS.CREATE,
-            clinicId: this.state.clinicId,
+            handbookId: this.state.handbookId,
         })
         this.setState({
             name: '',
             imageBase64: '',
-            imageBackground: '',
             descriptionHTML: '',
             descriptionMarkdown: '',
-            address: '',
-            clinicId: '',
+            handbookId: '',
             hasOldData: false
         })
     }
-    handleDeleteClinic = async (id) => {
-        let { hasOldData } = this.state;
-        await this.props.deleteClinic(id)
-        this.setState({
-            name: '',
-            imageBase64: '',
-            imageBackground: '',
-            descriptionHTML: '',
-            descriptionMarkdown: '',
-            address: '',
-            clinicId: '',
-            hasOldData: false
-        })
+    handleDeleteHandbook = async (id) => {
+        await this.props.deleteHandbook(id)
+        console.log('id:', id)
     }
     render() {
         let { language } = this.props
-        let { listClinic, hasOldData } = this.state
+        let { listHandbook, hasOldData } = this.state
         return (
 
             <div className="manage-specialty-container">
-                <div className="ms-title">Quản lý phòng khám</div>
+                <div className="ms-title">Quản lý cẩm nang</div>
                 <div className="add-new-specialty row">
                     <div className="col-6 form-group">
-                        <label >Tên phòng khám</label>
+                        <label >Tên cẩm nang</label>
                         <input className="form-control" type="text" value={this.state.name}
                             onChange={(event) => this.handleOnChangeInput(event, 'name')}
                         />
                     </div>
                     <div className="col-6 form-group">
-                        <label >Ảnh logo Phòng khám</label>
+                        <label >Ảnh logo cẩm nang</label>
                         <div className='preview-img-container form-control'>
                             <input id='previewImg'
                                 type="file"
@@ -189,37 +165,13 @@ class ManageClinic extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-6 form-group">
-                        <label >Địa chỉ phòng khám</label>
-                        <input className="form-control" type="text" value={this.state.address}
-                            onChange={(event) => this.handleOnChangeInput(event, 'address')}
-                        />
-                    </div>
-                    <div className="col-6 form-group">
-                        <label >Ảnh nền Phòng khám</label>
-                        <div className='preview-img-container form-control'>
-                            <input id='previewImgs'
-                                type="file"
-                                hidden
-                                onChange={(event) => this.handleOnchangeImage(event, 'imageBackground')}
-                            />
-                            <label className='label-upload' htmlFor="previewImgs">
-                                Tải ảnh <i className="fas fa-upload px-1"></i>
-                            </label>
-                            <div className='preview-image'
-                                style={{ backgroundImage: `url(${this.state.imageBackground})` }}
-                            // onClick={() => this.openPreviewImage()}
-                            >
-                            </div>
-                        </div>
-                    </div>
                     <div className="select-doctor-province row col-6 form-group ">
                         <select className="form-control col-6 select-doctor-province ml-3"
                             onChange={(event) => this.handleOnchangeSelect(event)}
                         >
-                            {listClinic && listClinic.length > 0
+                            {listHandbook && listHandbook.length > 0
                                 &&
-                                listClinic.map((item, index) => {
+                                listHandbook.map((item, index) => {
                                     return (
                                         <option className="select-doctor-province " key={index} value={item.value}
                                         >
@@ -231,7 +183,7 @@ class ManageClinic extends Component {
                         </select>
                         <div className="button-delete col-1 mt-2 ">
                             <button className="btn-delete "
-                                onClick={() => this.handleDeleteClinic(this.state.clinicId)}
+                                onClick={() => this.handleDeleteHandbook(this.state.handbookId)}
                             >
                                 <i className="fas fa-trash"></i>
                             </button>
@@ -248,7 +200,7 @@ class ManageClinic extends Component {
                     </div>
                     <div className="col-12">
                         <button
-                            onClick={() => this.handleSaveNewClinic()}
+                            onClick={() => this.handleSaveNewHandbook()}
                             className={hasOldData === true ? 'save-content-doctor ml-4 px-3 py-2' : 'create-content-doctor ml-4 px-3 py-2 '}
                         >
                             {hasOldData === true
@@ -274,8 +226,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         getAllRequredDoctorInfor: () => dispatch(actions.fetchAllRequiredDoctorInfor()),
-        saveInforClinic: (data) => dispatch(actions.saveInforClinic(data)),
-        deleteClinic: (id) => dispatch(actions.deleteClinic(id)),
+        saveInforHandbook: (data) => dispatch(actions.saveInforHandbook(data)),
+        deleteHandbook: (id) => dispatch(actions.deleteHandbook(id)),
     };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(ManageClinic);
+export default connect(mapStateToProps, mapDispatchToProps)(ManageHandbook);
